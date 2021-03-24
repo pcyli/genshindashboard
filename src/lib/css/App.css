@@ -1,0 +1,21 @@
+.Calendar {
+  height: 100vh;
+  width: 75vw;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+.Calendar .CalendarItem {
+  height: 100%;
+  width: 300px;
+  display: inline-block;
+  border-right: 1px solid black;
+}
+.Calendar .CalendarItem .CalendarTop {
+  height: 70%;
+}
+.Calendar .CalendarItem .CalendarBottom {
+  height: 30%;
+  border-top: 1px dashed black;
+}
+/*# sourceMappingURL=App.css.map */
