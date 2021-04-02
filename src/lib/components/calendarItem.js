@@ -1,10 +1,13 @@
 import React from 'react';
+import CalendarTop from "./calendarTop";
 
 export default class CalendarItem extends React.Component {
     render () {
+        let day = this.props.day;
+
         return (
             <div className="CalendarItem">
-                <div className="CalendarTop">{this.props.day}</div>
+                <CalendarTop day={day} />
                 <div className="CalendarBottom">bottom</div>
             </div>
         );

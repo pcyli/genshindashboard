@@ -1,4 +1,10 @@
+.App {
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
 .Calendar {
+  display: inline-block;
   height: 100vh;
   width: 75vw;
   overflow-x: auto;
@@ -17,5 +23,11 @@
 .Calendar .CalendarItem .CalendarBottom {
   height: 30%;
   border-top: 1px dashed black;
+}
+.Sidebar {
+  display: inline-block;
+  height: 100vh;
+  width: 25vw;
+  position: absolute;
 }
 /*# sourceMappingURL=App.css.map */
