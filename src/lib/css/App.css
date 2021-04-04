@@ -1,8 +1,18 @@
+::-webkit-scrollbar {
+  background: none;
+  height: 5px;
+}
+::-webkit-scrollbar-thumb {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+}
 .App {
   overflow: hidden;
   height: 100vh;
   width: 100vw;
   font-family: Roboto, sans-serif;
+  background-color: #f0e9e2;
 }
 .Calendar {
   display: inline-block;
@@ -39,6 +49,7 @@
   width: 33%;
   height: 9vh;
   margin: 0 auto;
+  background-image: radial-gradient(rgba(83, 144, 255, 0.6) 0%, transparent 60%);
   cursor: pointer;
 }
 .Calendar .CalendarItem .CalendarTop .container .MaterialImage img {
@@ -65,5 +76,11 @@
   height: 100vh;
   width: 25vw;
   position: absolute;
+}
+.Sidebar .transformer {
+  cursor: pointer;
+}
+.Sidebar .transformer:hover {
+  color: blue;
 }
 /*# sourceMappingURL=App.css.map */

@@ -1,20 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CalendarItem from './lib/components/calendarItem';
 
+import StateTools from "./lib/components/stateManager";
 import config from './lib/config/config.json'
 import './lib/css/App.css'
 import './lib/css/days.css'
 
 
 export default function App () {
-    let {calendarDays, checkInURL} = config,
+    let {calendarDays, checkInURL, codesURL} = config,
         currentDay = (new Date()).getDay(),
         displayOrder = calendarDays.slice(currentDay, calendarDays.length).concat(calendarDays.slice(0, currentDay));
 
-    const [userConfig, setUserConfig] = useState({
-        trackedCharacters : [],
-        transformerDay : ''
-    });
+    let stateManager = StateTools();
+
+    const [userConfig, setUserConfig] = useState(stateManager.loadUserConfig());
+
+    useEffect(() => {
+        stateManager.setUserConfig(userConfig);
+    }, [userConfig, stateManager])
 
     let generateCalendarItems = days => {
         let calendarItems = [];
@@ -27,7 +31,12 @@ export default function App () {
     let ulCalendarDays = days => {
         let ulDays = [];
         days.forEach(day => {
-            ulDays.push(<ul onClick={() => setUserConfig({transformerDay: day} )}>{day}</ul>)
+            ulDays.push(
+                <ul className='transformer'
+                    onClick={() => stateManager.updateUserConfig(setUserConfig, userConfig, {transformerDay: day} )}
+                    key={'transformer'+day}>
+                    {day}
+                </ul>)
         });
         return ulDays;
     }
@@ -41,7 +50,7 @@ export default function App () {
                 <ul>
                     <li><a href={checkInURL}>Check In</a></li>
                     <li>Events</li>
-                    <li>Codes</li>
+                    <li><a href={codesURL}>Codes</a></li>
                     <li>
                         <div>Set Transformer</div>
                         {ulCalendarDays(calendarDays)}

@@ -1,0 +1,25 @@
+.Sunday {
+  background-image: url('../bkgd/01.jpg');
+}
+.Monday {
+  background-image: url('../bkgd/02.jpg');
+}
+.Tuesday {
+  background-image: url('../bkgd/05.jpg');
+}
+.Wednesday {
+  background-image: url('../bkgd/04.jpg');
+}
+.Thursday {
+  background-image: url('../bkgd/03.jpg');
+}
+.Friday {
+  background-image: url('../bkgd/06.jpg');
+}
+.Saturday {
+  background-image: url('../bkgd/07.jpg');
+}
+[class$='day'] {
+  background-position: center;
+}
+/*# sourceMappingURL=days.css.map */

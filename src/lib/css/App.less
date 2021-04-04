@@ -2,8 +2,11 @@
 @thin_line: @thin solid;
 @thin_dash: @thin dashed;
 
+@genshin-grey: rgb(240,233,226);
+
 @gold-highlight: rgba(255,215,0, 0.6);
-@white-highlight: rgba(0,0,0, 0.6);
+@blue-highlight: rgba(83, 144, 255, 0.6);
+@black-highlight: rgba(0,0,0, 0.6);
 
 @material-size: {
   display: inline-block;
@@ -16,11 +19,23 @@
   }
 }
 
+::-webkit-scrollbar {
+  background: none;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+}
+
 .App {
   overflow: hidden;
   height: 100vh;
   width: 100vw;
   font-family: Roboto, sans-serif;
+  background-color: @genshin-grey;
 }
 
 .Calendar {
@@ -47,7 +62,7 @@
         font-size: 2em;
         color: white;
         margin-bottom: 2em;
-        background: @white-highlight;
+        background: @black-highlight;
       }
 
       .container {
@@ -56,6 +71,7 @@
 
         .MaterialImage {
           @material-size();
+          background-image: radial-gradient(@blue-highlight 0%, transparent 60%);
           cursor: pointer;
 
           &:hover {
@@ -72,6 +88,7 @@
 
       .MaterialImage {
         @material-size();
+
       }
     }
   }
@@ -82,4 +99,12 @@
   height: 100vh;
   width: 25vw;
   position: absolute;
+
+  .transformer {
+    cursor: pointer;
+
+    &:hover {
+      color: blue;
+    }
+  }
 }
