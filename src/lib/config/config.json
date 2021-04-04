@@ -1,0 +1,4 @@
+{
+  "calendarDays" : ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+  "checkInURL"  : "https://webstatic-sea.mihoyo.com/ys/event/signin-sea/index.html?act_id=e202102251931481&lang=en-us"
+}

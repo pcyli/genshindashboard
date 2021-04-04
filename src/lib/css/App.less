@@ -1,10 +1,26 @@
-@thin_line: 1px solid black;
-@thin_dash: 1px dashed black;
+@thin: 1px black;
+@thin_line: @thin solid;
+@thin_dash: @thin dashed;
+
+@gold-highlight: rgba(255,215,0, 0.6);
+@white-highlight: rgba(0,0,0, 0.6);
+
+@material-size: {
+  display: inline-block;
+  width: 33%;
+  height: 9vh;
+  margin: 0 auto;
+
+  img {
+    height: 100%;
+  }
+}
 
 .App {
   overflow: hidden;
   height: 100vh;
   width: 100vw;
+  font-family: Roboto, sans-serif;
 }
 
 .Calendar {
@@ -20,14 +36,43 @@
     width: 300px;
     display: inline-block;
     border-right: @thin_line;
+    vertical-align: top;
 
     .CalendarTop {
       height: 70%;
+
+      .day {
+        width: 100%;
+        text-align: center;
+        font-size: 2em;
+        color: white;
+        margin-bottom: 2em;
+        background: @white-highlight;
+      }
+
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+
+        .MaterialImage {
+          @material-size();
+          cursor: pointer;
+
+          &:hover {
+            background-image: radial-gradient(@gold-highlight 0%, transparent 70%);
+          }
+
+        }
+      }
     }
 
     .CalendarBottom {
       height: 30%;
       border-top: @thin_dash;
+
+      .MaterialImage {
+        @material-size();
+      }
     }
   }
 }

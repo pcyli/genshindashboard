@@ -1,14 +1,15 @@
 import React from 'react';
 import CalendarTop from "./calendarTop";
+import CalendarBottom from "./calendarBottom";
 
 export default class CalendarItem extends React.Component {
     render () {
-        let day = this.props.day;
+        let {day, config} = this.props;
 
         return (
             <div className="CalendarItem">
                 <CalendarTop day={day} />
-                <div className="CalendarBottom">bottom</div>
+                <CalendarBottom day={day} config={config} />
             </div>
         );
     };

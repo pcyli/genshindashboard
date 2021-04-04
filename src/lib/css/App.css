@@ -2,6 +2,7 @@
   overflow: hidden;
   height: 100vh;
   width: 100vw;
+  font-family: Roboto, sans-serif;
 }
 .Calendar {
   display: inline-block;
@@ -15,14 +16,49 @@
   height: 100%;
   width: 300px;
   display: inline-block;
-  border-right: 1px solid black;
+  border-right: 1px black solid;
+  vertical-align: top;
 }
 .Calendar .CalendarItem .CalendarTop {
   height: 70%;
 }
+.Calendar .CalendarItem .CalendarTop .day {
+  width: 100%;
+  text-align: center;
+  font-size: 2em;
+  color: white;
+  margin-bottom: 2em;
+  background: rgba(0, 0, 0, 0.6);
+}
+.Calendar .CalendarItem .CalendarTop .container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.Calendar .CalendarItem .CalendarTop .container .MaterialImage {
+  display: inline-block;
+  width: 33%;
+  height: 9vh;
+  margin: 0 auto;
+  cursor: pointer;
+}
+.Calendar .CalendarItem .CalendarTop .container .MaterialImage img {
+  height: 100%;
+}
+.Calendar .CalendarItem .CalendarTop .container .MaterialImage:hover {
+  background-image: radial-gradient(rgba(255, 215, 0, 0.6) 0%, transparent 70%);
+}
 .Calendar .CalendarItem .CalendarBottom {
   height: 30%;
-  border-top: 1px dashed black;
+  border-top: 1px black dashed;
+}
+.Calendar .CalendarItem .CalendarBottom .MaterialImage {
+  display: inline-block;
+  width: 33%;
+  height: 9vh;
+  margin: 0 auto;
+}
+.Calendar .CalendarItem .CalendarBottom .MaterialImage img {
+  height: 100%;
 }
 .Sidebar {
   display: inline-block;

@@ -3,28 +3,44 @@ import MaterialImage from "./materialImage";
 import genshin from "genshin-db";
 
 export default class calendarTop extends React.Component {
-    getTalentMaterialTypes (query) {
-        return genshin.talentmaterialtypes( query, { matchCategories: true });
+    getQueryHandler (type) {
+        switch (type) {
+            case 'talent':
+                return genshin.talentmaterialtypes;
+            case 'weapon':
+                return genshin.weaponmaterialtypes;
+            default:
+                throw (new Error('getQueryHandler: No type specified'));
+        }
     }
-    getWeaponMaterialTypes (query) {
-        return genshin.weaponmaterialtypes( query, { matchCategories: true });
-    }
+
     render () {
         let day = this.props.day;
-        let talentMaterials = this.getTalentMaterialTypes(day);
-        let weaponMaterials = this.getWeaponMaterialTypes(day);
 
-        let createMaterialImages = materials => {
-            let materialImages = [];
-            materials.forEach(material => {materialImages.push(<MaterialImage material={material} />)})
+        let createMaterialImages = (type) => {
+            let queryHandler,
+                materialNames,
+                materialImages = [];
+
+            queryHandler = this.getQueryHandler(type);
+            materialNames = queryHandler(day, {matchCategories: true});
+
+            materialNames.forEach(materialName => {
+                let material = queryHandler(materialName);
+                materialImages.push(<MaterialImage material={material} key={material.name} />)
+            });
 
             return materialImages;
         }
 
-        return <div className="CalendarTop">
-            <div className="day">{this.props.day}</div>
-            { createMaterialImages(talentMaterials) }
-            { createMaterialImages(weaponMaterials) }
+        return <div className={["CalendarTop", day].join(' ')}>
+            <div className="day">{day}</div>
+            <div className="container">
+                { createMaterialImages('talent') }
+            </div>
+            <div className="container">
+                { createMaterialImages('weapon') }
+            </div>
         </div>;
     }
 }
