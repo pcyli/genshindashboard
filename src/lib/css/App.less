@@ -1,3 +1,5 @@
+@import url('glow-animation');
+
 @thin: 1px black;
 @thin_line: @thin solid;
 @thin_dash: @thin dashed;
@@ -88,6 +90,10 @@
 
       .MaterialImage {
         @material-size();
+
+        img {
+          .glow-ani-mixin(glow 1.25s ease-in-out infinite alternate);
+        }
 
       }
     }

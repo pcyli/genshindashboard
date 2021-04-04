@@ -1,3 +1,148 @@
+@-webkit-keyframes glow {
+  0% {
+    background-image: radial-gradient(#6087f6 0%, transparent 70%);
+  }
+  12% {
+    background-image: radial-gradient(#6087f6 0%, transparent 65%);
+  }
+  25% {
+    background-image: radial-gradient(#6087f6 0%, transparent 60%);
+  }
+  37% {
+    background-image: radial-gradient(#6087f6 0%, transparent 55%);
+  }
+  50% {
+    background-image: radial-gradient(#6087f6 0%, transparent 50%);
+  }
+  62% {
+    background-image: radial-gradient(#6087f6 0%, transparent 45%);
+  }
+  75% {
+    background-image: radial-gradient(#6087f6 0%, transparent 40%);
+  }
+  89% {
+    background-image: radial-gradient(#6087f6 0%, transparent 35%);
+  }
+  100% {
+    background-image: radial-gradient(#6087f6 0%, transparent 30%);
+  }
+}
+@-moz-keyframes glow {
+  0% {
+    background-image: radial-gradient(#6087f6 0%, transparent 70%);
+  }
+  12% {
+    background-image: radial-gradient(#6087f6 0%, transparent 65%);
+  }
+  25% {
+    background-image: radial-gradient(#6087f6 0%, transparent 60%);
+  }
+  37% {
+    background-image: radial-gradient(#6087f6 0%, transparent 55%);
+  }
+  50% {
+    background-image: radial-gradient(#6087f6 0%, transparent 50%);
+  }
+  62% {
+    background-image: radial-gradient(#6087f6 0%, transparent 45%);
+  }
+  75% {
+    background-image: radial-gradient(#6087f6 0%, transparent 40%);
+  }
+  89% {
+    background-image: radial-gradient(#6087f6 0%, transparent 35%);
+  }
+  100% {
+    background-image: radial-gradient(#6087f6 0%, transparent 30%);
+  }
+}
+@-ms-keyframes glow {
+  0% {
+    background-image: radial-gradient(#6087f6 0%, transparent 70%);
+  }
+  12% {
+    background-image: radial-gradient(#6087f6 0%, transparent 65%);
+  }
+  25% {
+    background-image: radial-gradient(#6087f6 0%, transparent 60%);
+  }
+  37% {
+    background-image: radial-gradient(#6087f6 0%, transparent 55%);
+  }
+  50% {
+    background-image: radial-gradient(#6087f6 0%, transparent 50%);
+  }
+  62% {
+    background-image: radial-gradient(#6087f6 0%, transparent 45%);
+  }
+  75% {
+    background-image: radial-gradient(#6087f6 0%, transparent 40%);
+  }
+  89% {
+    background-image: radial-gradient(#6087f6 0%, transparent 35%);
+  }
+  100% {
+    background-image: radial-gradient(#6087f6 0%, transparent 30%);
+  }
+}
+@-o-keyframes glow {
+  0% {
+    background-image: radial-gradient(#6087f6 0%, transparent 70%);
+  }
+  12% {
+    background-image: radial-gradient(#6087f6 0%, transparent 65%);
+  }
+  25% {
+    background-image: radial-gradient(#6087f6 0%, transparent 60%);
+  }
+  37% {
+    background-image: radial-gradient(#6087f6 0%, transparent 55%);
+  }
+  50% {
+    background-image: radial-gradient(#6087f6 0%, transparent 50%);
+  }
+  62% {
+    background-image: radial-gradient(#6087f6 0%, transparent 45%);
+  }
+  75% {
+    background-image: radial-gradient(#6087f6 0%, transparent 40%);
+  }
+  89% {
+    background-image: radial-gradient(#6087f6 0%, transparent 35%);
+  }
+  100% {
+    background-image: radial-gradient(#6087f6 0%, transparent 30%);
+  }
+}
+@keyframes glow {
+  0% {
+    background-image: radial-gradient(#6087f6 0%, transparent 70%);
+  }
+  12% {
+    background-image: radial-gradient(#6087f6 0%, transparent 65%);
+  }
+  25% {
+    background-image: radial-gradient(#6087f6 0%, transparent 60%);
+  }
+  37% {
+    background-image: radial-gradient(#6087f6 0%, transparent 55%);
+  }
+  50% {
+    background-image: radial-gradient(#6087f6 0%, transparent 50%);
+  }
+  62% {
+    background-image: radial-gradient(#6087f6 0%, transparent 45%);
+  }
+  75% {
+    background-image: radial-gradient(#6087f6 0%, transparent 40%);
+  }
+  89% {
+    background-image: radial-gradient(#6087f6 0%, transparent 35%);
+  }
+  100% {
+    background-image: radial-gradient(#6087f6 0%, transparent 30%);
+  }
+}
 ::-webkit-scrollbar {
   background: none;
   height: 5px;
@@ -70,6 +215,11 @@
 }
 .Calendar .CalendarItem .CalendarBottom .MaterialImage img {
   height: 100%;
+}
+.Calendar .CalendarItem .CalendarBottom .MaterialImage img {
+  -webkit-animation: glow 1.25s ease-in-out infinite alternate;
+  -moz-animation: glow 1.25s ease-in-out infinite alternate;
+  animation: glow 1.25s ease-in-out infinite alternate;
 }
 .Sidebar {
   display: inline-block;

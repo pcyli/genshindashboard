@@ -4,12 +4,12 @@ import CalendarBottom from "./calendarBottom";
 
 export default class CalendarItem extends React.Component {
     render () {
-        let {day, config} = this.props;
+        let {day, userConfig} = this.props;
 
         return (
             <div className="CalendarItem">
                 <CalendarTop day={day} />
-                <CalendarBottom day={day} config={config} />
+                <CalendarBottom day={day} config={userConfig} />
             </div>
         );
     };

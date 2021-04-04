@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import CalendarItem from './lib/components/calendarItem';
-
+import Calendar from "./lib/components/calendar";
+import CharacterTracker from "./lib/components/characterTracker";
 import StateTools from "./lib/components/stateManager";
-import config from './lib/config/config.json'
-import './lib/css/App.css'
-import './lib/css/days.css'
+import config from './lib/data/config.json';
+import codes from './lib/data/codes.json';
+import './lib/css/App.css';
+import './lib/css/days.css';
 
 
 export default function App () {
@@ -20,42 +21,49 @@ export default function App () {
         stateManager.setUserConfig(userConfig);
     }, [userConfig, stateManager])
 
-    let generateCalendarItems = days => {
-        let calendarItems = [];
-        days.forEach(day => {
-            calendarItems.push(<CalendarItem day={day} config={userConfig} key={day}/>)
-        });
-        return calendarItems;
-    }
-
-    let ulCalendarDays = days => {
+    let generateTransformerDayItems = days => {
         let ulDays = [];
         days.forEach(day => {
             ulDays.push(
                 <ul className='transformer'
                     onClick={() => stateManager.updateUserConfig(setUserConfig, userConfig, {transformerDay: day} )}
-                    key={'transformer'+day}>
+                    key={`transformer${day}`}>
                     {day}
                 </ul>)
         });
         return ulDays;
     }
 
+    let generateCodeItems = codes => {
+        let ulCodes = [];
+
+        codes.forEach(code => {
+            ulCodes.push(
+                <ul>{code}</ul>
+            );
+        })
+
+        return ulCodes;
+    }
+
+
+
     return (
         <div className="App">
-            <div className="Calendar">
-                {generateCalendarItems(displayOrder, config)}
-            </div>
+            <Calendar displayOrder={displayOrder} userConfig={userConfig} />
             <div className="Sidebar">
                 <ul>
                     <li><a href={checkInURL}>Check In</a></li>
                     <li>Events</li>
-                    <li><a href={codesURL}>Codes</a></li>
+                    <li>
+                        <a href={codesURL}>Codes</a>
+                        {generateCodeItems(codes)}
+                    </li>
                     <li>
                         <div>Set Transformer</div>
-                        {ulCalendarDays(calendarDays)}
+                        {generateTransformerDayItems(calendarDays)}
                     </li>
-                    <li>Character tracker</li>
+                    <CharacterTracker />
                     <li>Build</li>
                     <li>Calculator</li>
                 </ul>

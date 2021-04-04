@@ -8,7 +8,7 @@ export default class MaterialImage extends React.Component {
             highMaterialName = material.name;
         }
 
-        return 'img/items/Item_' + this.convertURISafe(highMaterialName) + '.png';
+        return `img/items/Item_${this.convertURISafe(highMaterialName)}.png`;
     }
     convertURISafe (input) {
         return escape(input.replace(/["']/g, '').split(' ').join('_'));

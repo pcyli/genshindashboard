@@ -1,0 +1,45 @@
+@lightblue-highlight: rgb(96, 135, 246);
+
+@-webkit-keyframes glow {.frames;}
+@-moz-keyframes glow {.frames;}
+@-ms-keyframes glow {.frames;}
+@-o-keyframes glow {.frames;}
+@keyframes glow {.frames;}
+
+.frames () {
+  0% {
+    background-image: radial-gradient(@lightblue-highlight 0%, transparent 70%);
+  }
+  12% {
+    background-image: radial-gradient(@lightblue-highlight 0%, transparent 65%);
+  }
+  25% {
+    background-image: radial-gradient(@lightblue-highlight 0%, transparent 60%);
+  }
+  37% {
+    background-image: radial-gradient(@lightblue-highlight 0%, transparent 55%);
+  }
+  50% {
+    background-image: radial-gradient(@lightblue-highlight 0%, transparent 50%);
+  }
+  62% {
+    background-image: radial-gradient(@lightblue-highlight 0%, transparent 45%);
+  }
+  75% {
+    background-image: radial-gradient(@lightblue-highlight 0%, transparent 40%);
+  }
+  89% {
+    background-image: radial-gradient(@lightblue-highlight 0%, transparent 35%);
+  }
+  100% {
+    background-image: radial-gradient(@lightblue-highlight 0%, transparent 30%);
+  }
+}
+
+.glow-ani-mixin (@arguments) {
+  -webkit-animation: @arguments;
+  -moz-animation: @arguments;
+  animation: @arguments;
+}
+
+
