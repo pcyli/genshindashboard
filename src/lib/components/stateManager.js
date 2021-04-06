@@ -1,34 +1,42 @@
-export default function StateTools () {
-    let getUserConfig = () => {
-        return JSON.parse(localStorage.getItem('config'));
-    }
+import { useState, useEffect } from 'react';
+import config from '../data/config.json';
 
-    let setUserConfig = (config) => {
+export default function StateManager() {
+    let { defaultState } = config;
+
+    let getUserConfig = () => userConfig;
+
+    let setSavedUserConfig = (config) => {
         localStorage.setItem('config', JSON.stringify(config));
     }
 
-    let updateUserConfig = (reactHandler, oldValues, newValue) => {
-        let updatedUserConfig = {...oldValues, ...newValue};
+    let updateUserConfig = (newValue) => {
+        let updatedUserConfig = {...userConfig, ...newValue};
+        setUserConfigState(updatedUserConfig);
+    }
 
-        reactHandler(updatedUserConfig);
+    let getSavedUserConfig = () => {
+        return JSON.parse(localStorage.getItem('config'));
     }
 
     let loadUserConfig = () => {
-        let storedUserConfig = getUserConfig();
+        let storedUserConfig = getSavedUserConfig();
 
         if (storedUserConfig) {
             return storedUserConfig;
         } else {
-            return {
-                trackedCharacters: [],
-                transformerDay: ''
-            };
+            return defaultState;
         }
     }
 
+    const [userConfig, setUserConfigState] = useState(loadUserConfig());
+
+    useEffect(() => {
+        setSavedUserConfig(userConfig);
+    }, [userConfig])
+
     return {
         getUserConfig : getUserConfig,
-        setUserConfig : setUserConfig,
         loadUserConfig : loadUserConfig,
         updateUserConfig : updateUserConfig
     }

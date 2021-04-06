@@ -206,6 +206,10 @@
 .Calendar .CalendarItem .CalendarBottom {
   height: 30%;
   border-top: 1px black dashed;
+  overflow-x: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 1em;
 }
 .Calendar .CalendarItem .CalendarBottom .MaterialImage {
   display: inline-block;
@@ -221,6 +225,15 @@
   -moz-animation: glow 1.25s ease-in-out infinite alternate;
   animation: glow 1.25s ease-in-out infinite alternate;
 }
+.Calendar .CalendarItem .CalendarBottom .CharacterIcon {
+  display: inline-block;
+  width: 33%;
+  height: 9vh;
+  margin: 0 auto;
+}
+.Calendar .CalendarItem .CalendarBottom .CharacterIcon img {
+  height: 100%;
+}
 .Sidebar {
   display: inline-block;
   height: 100vh;
@@ -231,6 +244,12 @@
   cursor: pointer;
 }
 .Sidebar .transformer:hover {
+  color: blue;
+}
+.Sidebar .characterTracker {
+  cursor: pointer;
+}
+.Sidebar .characterTracker:hover {
   color: blue;
 }
 /*# sourceMappingURL=App.css.map */

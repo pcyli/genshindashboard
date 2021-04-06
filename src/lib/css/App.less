@@ -21,6 +21,14 @@
   }
 }
 
+@interactive: {
+  cursor: pointer;
+
+  &:hover {
+    color: blue;
+  }
+}
+
 ::-webkit-scrollbar {
   background: none;
   height: 5px;
@@ -87,6 +95,10 @@
     .CalendarBottom {
       height: 30%;
       border-top: @thin_dash;
+      overflow-x: hidden;
+      display: flex;
+      flex-wrap: wrap;
+      padding-top: 1em;
 
       .MaterialImage {
         @material-size();
@@ -95,6 +107,10 @@
           .glow-ani-mixin(glow 1.25s ease-in-out infinite alternate);
         }
 
+      }
+
+      .CharacterIcon {
+        @material-size();
       }
     }
   }
@@ -107,10 +123,9 @@
   position: absolute;
 
   .transformer {
-    cursor: pointer;
-
-    &:hover {
-      color: blue;
-    }
+    @interactive();
+  }
+  .characterTracker {
+    @interactive();
   }
 }

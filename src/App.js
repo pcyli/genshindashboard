@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Calendar from "./lib/components/calendar";
 import CharacterTracker from "./lib/components/characterTracker";
-import StateTools from "./lib/components/stateManager";
+import StateManager from "./lib/components/stateManager";
 import config from './lib/data/config.json';
 import codes from './lib/data/codes.json';
 import './lib/css/App.css';
@@ -13,20 +13,16 @@ export default function App () {
         currentDay = (new Date()).getDay(),
         displayOrder = calendarDays.slice(currentDay, calendarDays.length).concat(calendarDays.slice(0, currentDay));
 
-    let stateManager = StateTools();
+    let stateManager = StateManager();
 
-    const [userConfig, setUserConfig] = useState(stateManager.loadUserConfig());
-
-    useEffect(() => {
-        stateManager.setUserConfig(userConfig);
-    }, [userConfig, stateManager])
+    let userConfig = stateManager.getUserConfig();
 
     let generateTransformerDayItems = days => {
         let ulDays = [];
         days.forEach(day => {
             ulDays.push(
                 <ul className='transformer'
-                    onClick={() => stateManager.updateUserConfig(setUserConfig, userConfig, {transformerDay: day} )}
+                    onClick={() => stateManager.updateUserConfig({transformerDay: day})}
                     key={`transformer${day}`}>
                     {day}
                 </ul>)
@@ -46,8 +42,6 @@ export default function App () {
         return ulCodes;
     }
 
-
-
     return (
         <div className="App">
             <Calendar displayOrder={displayOrder} userConfig={userConfig} />
@@ -63,7 +57,7 @@ export default function App () {
                         <div>Set Transformer</div>
                         {generateTransformerDayItems(calendarDays)}
                     </li>
-                    <CharacterTracker />
+                    <CharacterTracker stateManager={stateManager} />
                     <li>Build</li>
                     <li>Calculator</li>
                 </ul>
