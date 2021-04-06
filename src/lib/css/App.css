@@ -269,12 +269,21 @@
   height: calc(30% + 2px);
   background: #e3ddd3;
   overflow-x: hidden;
-  padding-top: 1em;
+  padding: 1em 0 1em 0;
   position: relative;
   top: calc(-1 * 2px);
   border-top: rgba(227, 221, 211, 0.4) 2px solid;
   background-clip: padding-box;
   border-radius: 0 0 10px 10px;
+}
+.Calendar .CalendarItem .CalendarBottom::-webkit-scrollbar {
+  background: #e3ddd3;
+  width: 5px;
+}
+.Calendar .CalendarItem .CalendarBottom::-webkit-scrollbar-thumb {
+  opacity: 1;
+  background: #dbd1bd;
+  border-radius: 5px;
 }
 .Calendar .CalendarItem .CalendarBottom .MaterialImage {
   display: inline-block;

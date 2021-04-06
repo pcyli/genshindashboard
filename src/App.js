@@ -35,7 +35,7 @@ export default function App () {
 
         codes.forEach(code => {
             ulCodes.push(
-                <ul>{code}</ul>
+                <ul key={code}>{code}</ul>
             );
         })
 

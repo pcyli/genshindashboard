@@ -130,7 +130,7 @@
       background: @genshin-grey;
 
       overflow-x: hidden;
-      padding-top: 1em;
+      padding: 1em 0 1em 0;
 
       position: relative;
       top: calc(-1 * @card-bottom-fade);
@@ -138,6 +138,17 @@
       background-clip: padding-box;
 
       border-radius: 0 0 @card-border-radius @card-border-radius;
+
+      &::-webkit-scrollbar {
+        background: @genshin-grey;
+        width: 5px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        opacity: 1;
+        background: @genshin-darkgrey;//rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+      }
 
       .MaterialImage {
         @material-size();
@@ -149,7 +160,7 @@
       }
 
       .CharacterIcon {
-        @material-size();
+          @material-size();
       }
     }
   }
