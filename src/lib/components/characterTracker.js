@@ -2,6 +2,10 @@ import React from 'react';
 import genshin from "genshin-db";
 
 export default class CharacterTracker extends React.Component {
+    removeFromArray (array, remove) {
+        array.splice(array.indexOf(remove), 1);
+    }
+
     getQueryHandler (type) {
         switch (type) {
             case 'talent':
@@ -20,7 +24,7 @@ export default class CharacterTracker extends React.Component {
 
         if (trackedCharacters.includes(characterName)) {
             newConfig = [...trackedCharacters];
-            newConfig.splice(newConfig.indexOf(characterName), 1);
+            this.removeFromArray(newConfig, characterName);
         } else {
             newConfig = [...trackedCharacters, characterName];
         }
@@ -49,6 +53,8 @@ export default class CharacterTracker extends React.Component {
 
     render () {
         let characterNames = this.getQueryHandler('character')('names', {matchCategories: true});
+        this.removeFromArray(characterNames, 'Aether');
+        this.removeFromArray(characterNames, 'Lumine');
 
         return (
             <li>

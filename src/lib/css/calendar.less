@@ -1,0 +1,156 @@
+@import url('glow-animation');
+
+@thin: 1px;
+@thin_line: @thin solid;
+@thin_dash: @thin dashed;
+
+@gold-highlight: rgba(255,215,0, 0.6);
+@blue-highlight: rgba(83, 144, 255, 0.6);
+@black-highlight: rgba(0,0,0, 0.6);
+
+@card-padding: 4px;
+@card-border-radius: 10px;
+@card-bottom-fade: 2px;
+@card-frame-size: 25px;
+
+@material-size: {
+  display: inline-block;
+  width: 33%;
+  height: 9vh;
+  margin: 0 auto;
+
+  img {
+    height: 100%;
+  }
+}
+
+.Calendar {
+  display: inline-block;
+  height: 100vh;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+
+  .CalendarItem {
+    height: 100%;
+    width: 300px;
+    vertical-align: top;
+    display: inline-block;
+    position: relative;
+
+    background: white;
+    border: @thin_line;
+    border-radius: @card-border-radius;
+
+    padding: @card-padding;
+    margin-right: 5px;
+
+    .frame {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      pointer-events : none;
+
+      .corner {
+        position: absolute;
+        height: @card-frame-size;
+        width: @card-frame-size;
+        z-index: 999;
+        opacity: 0.7;
+
+        &.top {
+          top: @card-padding;
+        }
+
+        &.bottom {
+          bottom: calc(3 * @card-padding);
+        }
+
+        &.left {
+          left: @card-padding;
+        }
+
+        &.right {
+          right: calc(3 * @card-padding);
+        }
+
+        &.top.left {
+          background: url('../../assets/img/corners.png') 0 0;
+        }
+        &.top.right {
+          background: url('../../assets/img/corners.png') @card-frame-size 0;
+        }
+        &.bottom.left {
+          background: url('../../assets/img/corners.png') 0 @card-frame-size;
+        }
+        &.bottom.right {
+          background: url('../../assets/img/corners.png') @card-frame-size @card-frame-size;
+        }
+      }
+    }
+
+    .CalendarTop {
+      height: 70%;
+      border: @card-padding solid @blue-highlight;
+      border-bottom: none;
+      border-radius: @card-border-radius @card-border-radius 0 0;
+
+      .day {
+        width: 100%;
+        text-align: center;
+        font-size: 2em;
+        color: white;
+        margin-bottom: 2em;
+        background: @black-highlight;
+        border-radius: @card-border-radius @card-border-radius 0 0;
+      }
+
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+
+        .MaterialImage {
+          @material-size();
+          background-image: radial-gradient(@blue-highlight 0%, transparent 60%);
+          cursor: pointer;
+
+          &:hover {
+            background-image: radial-gradient(@genshin-lightgrey 0%, @genshin-lightgrey 60%, transparent 70%);
+          }
+
+        }
+      }
+    }
+
+    .CalendarBottom {
+      display: flex;
+      flex-wrap: wrap;
+
+      height: calc(30% + @card-bottom-fade);
+      background: @genshin-grey;
+
+      overflow-x: hidden;
+      padding-top: 1em;
+
+      position: relative;
+      top: calc(-1 * @card-bottom-fade);
+      border-top: fade(@genshin-grey, 40%) @card-bottom-fade solid;
+      background-clip: padding-box;
+
+      border-radius: 0 0 @card-border-radius @card-border-radius;
+
+      .MaterialImage {
+        @material-size();
+
+        img {
+          .glow-ani-mixin(glow 1.25s ease-in-out infinite alternate);
+        }
+
+      }
+
+      .CharacterIcon {
+        @material-size();
+      }
+    }
+  }
+}

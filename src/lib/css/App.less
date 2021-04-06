@@ -1,32 +1,21 @@
-@import url('glow-animation');
-
-@thin: 1px black;
-@thin_line: @thin solid;
-@thin_dash: @thin dashed;
-
-@genshin-grey: rgb(240,233,226);
-
-@gold-highlight: rgba(255,215,0, 0.6);
-@blue-highlight: rgba(83, 144, 255, 0.6);
-@black-highlight: rgba(0,0,0, 0.6);
-
-@material-size: {
-  display: inline-block;
-  width: 33%;
-  height: 9vh;
-  margin: 0 auto;
-
-  img {
-    height: 100%;
-  }
+@path-fonts: '../../assets/fonts';
+@font-face {
+  font-family: 'genshin-font';
+  //src: url('@{path-fonts}/HYWenHei.tff') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
-@interactive: {
-  cursor: pointer;
+@genshin-lightgrey: rgb(236,229,216);
+@genshin-grey: rgb(227,221,211);
+@genshin-darkgrey: rgb(219,209,189);
+@genshin-blue: rgb(58,54,66);
 
-  &:hover {
-    color: blue;
-  }
+@sidebar-width: 275px;
+
+* {
+  box-sizing: border-box;
 }
 
 ::-webkit-scrollbar {
@@ -36,7 +25,7 @@
 
 ::-webkit-scrollbar-thumb {
   opacity: 1;
-  background: rgba(0, 0, 0, 0.5);
+  background: @genshin-darkgrey;//rgba(0, 0, 0, 0.5);
   border-radius: 5px;
 }
 
@@ -44,88 +33,16 @@
   overflow: hidden;
   height: 100vh;
   width: 100vw;
-  font-family: Roboto, sans-serif;
-  background-color: @genshin-grey;
+  font-family: sans-serif;
+  background-color: @genshin-blue;
 }
 
 .Calendar {
-  display: inline-block;
-  height: 100vh;
-  width: 75vw;
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
-
-  .CalendarItem {
-    height: 100%;
-    width: 300px;
-    display: inline-block;
-    border-right: @thin_line;
-    vertical-align: top;
-
-    .CalendarTop {
-      height: 70%;
-
-      .day {
-        width: 100%;
-        text-align: center;
-        font-size: 2em;
-        color: white;
-        margin-bottom: 2em;
-        background: @black-highlight;
-      }
-
-      .container {
-        display: flex;
-        flex-wrap: wrap;
-
-        .MaterialImage {
-          @material-size();
-          background-image: radial-gradient(@blue-highlight 0%, transparent 60%);
-          cursor: pointer;
-
-          &:hover {
-            background-image: radial-gradient(@gold-highlight 0%, transparent 70%);
-          }
-
-        }
-      }
-    }
-
-    .CalendarBottom {
-      height: 30%;
-      border-top: @thin_dash;
-      overflow-x: hidden;
-      display: flex;
-      flex-wrap: wrap;
-      padding-top: 1em;
-
-      .MaterialImage {
-        @material-size();
-
-        img {
-          .glow-ani-mixin(glow 1.25s ease-in-out infinite alternate);
-        }
-
-      }
-
-      .CharacterIcon {
-        @material-size();
-      }
-    }
-  }
+  width: calc(100vw - @sidebar-width);
 }
-
 .Sidebar {
-  display: inline-block;
-  height: 100vh;
-  width: 25vw;
-  position: absolute;
-
-  .transformer {
-    @interactive();
-  }
-  .characterTracker {
-    @interactive();
-  }
+  width: @sidebar-width;
 }
+
+@import url('calendar');
+@import url('sidebar');
