@@ -13,7 +13,20 @@
   position: absolute;
   background: @genshin-grey;
 
-  .transformer {
+  .topLevel {
+    height: 3em;
+    display: block;
+    text-align: center;
+    vertical-align: middle;
+
+    border: @thin_line;
+  }
+
+  .subLevel {
+    display: none;
+  }
+
+  .transformerDay {
     @interactive();
   }
   .characterTracker {

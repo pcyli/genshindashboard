@@ -36,8 +36,8 @@ export default function StateManager() {
     }, [userConfig])
 
     return {
-        getUserConfig : getUserConfig,
-        loadUserConfig : loadUserConfig,
-        updateUserConfig : updateUserConfig
+        getUserConfig,
+        loadUserConfig,
+        updateUserConfig
     }
 }

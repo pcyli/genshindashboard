@@ -38,13 +38,13 @@ export default class CharacterTracker extends React.Component {
 
         characterNames.forEach(characterName => {
             ulCharacters.push(
-                <ul
+                <div
                     className='characterTracker'
                     onClick={ () => { this.toggleCharacterTracking(characterName); } }
                     key = {characterName}
                 >
                     {userConfig.includes(characterName) && '> '}{characterName}
-                </ul>
+                </div>
             );
         })
 
@@ -57,10 +57,12 @@ export default class CharacterTracker extends React.Component {
         this.removeFromArray(characterNames, 'Lumine');
 
         return (
-            <li>
-                <div>Character tracker</div>
-                {this.generateCharacterItems(characterNames)}
-            </li>
+            <>
+                <div className='topLevel'>Character tracker</div>
+                <div className='subLevel'>
+                    {this.generateCharacterItems(characterNames)}
+                </div>
+            </>
         );
     }
 }

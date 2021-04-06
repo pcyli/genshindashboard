@@ -315,10 +315,20 @@
   position: absolute;
   background: #e3ddd3;
 }
-.Sidebar .transformer {
+.Sidebar .topLevel {
+  height: 3em;
+  display: block;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid;
+}
+.Sidebar .subLevel {
+  display: none;
+}
+.Sidebar .transformerDay {
   cursor: pointer;
 }
-.Sidebar .transformer:hover {
+.Sidebar .transformerDay:hover {
   color: blue;
 }
 .Sidebar .characterTracker {
