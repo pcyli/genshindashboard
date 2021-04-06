@@ -58,7 +58,9 @@ export default class CharacterTracker extends React.Component {
 
         return (
             <>
-                <div className='topLevel'>Character tracker</div>
+                <div className='topLevel'>
+                    Character tracker
+                </div>
                 <div className='subLevel'>
                     {this.generateCharacterItems(characterNames)}
                 </div>

@@ -7,7 +7,7 @@ export default class SidebarItem extends React.Component {
         return <div className='topLevel'
                     onClick={handler}
                 >
-                    <p>{text}</p>
+                    {text}
                 </div>;
     }
 }

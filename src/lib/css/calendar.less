@@ -46,47 +46,15 @@
     margin-right: 5px;
 
     .frame {
-      width: 100%;
-      height: 100%;
+      width: calc(100% - 4 * @card-padding);
+      height: calc(100% - 4 * @card-padding);
       position: absolute;
+      top: calc(2 * @card-padding);
+      left: calc(2 * @card-padding);
+      z-index: 999;
       pointer-events : none;
-
-      .corner {
-        position: absolute;
-        height: @card-frame-size;
-        width: @card-frame-size;
-        z-index: 999;
-        opacity: 0.7;
-
-        &.top {
-          top: @card-padding;
-        }
-
-        &.bottom {
-          bottom: calc(3 * @card-padding);
-        }
-
-        &.left {
-          left: @card-padding;
-        }
-
-        &.right {
-          right: calc(3 * @card-padding);
-        }
-
-        &.top.left {
-          background: url('../../assets/img/corners.png') 0 0;
-        }
-        &.top.right {
-          background: url('../../assets/img/corners.png') @card-frame-size 0;
-        }
-        &.bottom.left {
-          background: url('../../assets/img/corners.png') 0 @card-frame-size;
-        }
-        &.bottom.right {
-          background: url('../../assets/img/corners.png') @card-frame-size @card-frame-size;
-        }
-      }
+      border: @card-frame-size solid transparent;
+      border-image: url('../../assets/img/corners.png') 28 stretch;
     }
 
     .CalendarTop {
@@ -141,13 +109,6 @@
 
       &::-webkit-scrollbar {
         background: @genshin-grey;
-        width: 5px;
-      }
-
-      &::-webkit-scrollbar-thumb {
-        opacity: 1;
-        background: @genshin-darkgrey;//rgba(0, 0, 0, 0.5);
-        border-radius: 5px;
       }
 
       .MaterialImage {

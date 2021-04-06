@@ -1,12 +1,3 @@
-@path-fonts: '../../assets/fonts';
-@font-face {
-  font-family: 'genshin-font';
-  //src: url('@{path-fonts}/HYWenHei.tff') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
 @genshin-lightgrey: rgb(236,229,216);
 @genshin-grey: rgb(227,221,211);
 @genshin-darkgrey: rgb(219,209,189);
@@ -21,11 +12,12 @@
 ::-webkit-scrollbar {
   background: none;
   height: 5px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
   opacity: 1;
-  background: @genshin-darkgrey;//rgba(0, 0, 0, 0.5);
+  background: @genshin-darkgrey;
   border-radius: 5px;
 }
 
@@ -33,7 +25,7 @@
   overflow: hidden;
   height: 100vh;
   width: 100vw;
-  font-family: sans-serif;
+  //font-family: genshin-font, sans-serif;
   background-color: @genshin-blue;
 }
 

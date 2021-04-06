@@ -20,12 +20,14 @@ export default class TransformerChanger extends React.Component {
     render() {
 
         return (
-            <div className='topLevel'>
-                <div>Set Transformer</div>
+            <>
+                <div className='topLevel'>
+                    Set Transformer
+                </div>
                 <div className='subLevel'>
                     {this.generateTransformerDayItems()}
                 </div>
-            </div>
+            </>
         );
     }
 }

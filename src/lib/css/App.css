@@ -1,15 +1,10 @@
-@font-face {
-  font-family: 'genshin-font';
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
 * {
   box-sizing: border-box;
 }
 ::-webkit-scrollbar {
   background: none;
   height: 5px;
+  width: 5px;
 }
 ::-webkit-scrollbar-thumb {
   opacity: 1;
@@ -20,7 +15,6 @@
   overflow: hidden;
   height: 100vh;
   width: 100vw;
-  font-family: sans-serif;
   background-color: #3a3642;
 }
 .Calendar {
@@ -194,41 +188,15 @@
   margin-right: 5px;
 }
 .Calendar .CalendarItem .frame {
-  width: 100%;
-  height: 100%;
+  width: calc(100% - 4 * 4px);
+  height: calc(100% - 4 * 4px);
   position: absolute;
-  pointer-events: none;
-}
-.Calendar .CalendarItem .frame .corner {
-  position: absolute;
-  height: 25px;
-  width: 25px;
+  top: calc(2 * 4px);
+  left: calc(2 * 4px);
   z-index: 999;
-  opacity: 0.7;
-}
-.Calendar .CalendarItem .frame .corner.top {
-  top: 4px;
-}
-.Calendar .CalendarItem .frame .corner.bottom {
-  bottom: calc(3 * 4px);
-}
-.Calendar .CalendarItem .frame .corner.left {
-  left: 4px;
-}
-.Calendar .CalendarItem .frame .corner.right {
-  right: calc(3 * 4px);
-}
-.Calendar .CalendarItem .frame .corner.top.left {
-  background: url('../../assets/img/corners.png') 0 0;
-}
-.Calendar .CalendarItem .frame .corner.top.right {
-  background: url('../../assets/img/corners.png') 25px 0;
-}
-.Calendar .CalendarItem .frame .corner.bottom.left {
-  background: url('../../assets/img/corners.png') 0 25px;
-}
-.Calendar .CalendarItem .frame .corner.bottom.right {
-  background: url('../../assets/img/corners.png') 25px 25px;
+  pointer-events: none;
+  border: 25px solid transparent;
+  border-image: url('../../assets/img/corners.png') 28 stretch;
 }
 .Calendar .CalendarItem .CalendarTop {
   height: 70%;
@@ -278,12 +246,6 @@
 }
 .Calendar .CalendarItem .CalendarBottom::-webkit-scrollbar {
   background: #e3ddd3;
-  width: 5px;
-}
-.Calendar .CalendarItem .CalendarBottom::-webkit-scrollbar-thumb {
-  opacity: 1;
-  background: #dbd1bd;
-  border-radius: 5px;
 }
 .Calendar .CalendarItem .CalendarBottom .MaterialImage {
   display: inline-block;
@@ -310,20 +272,40 @@
 }
 .Sidebar {
   display: inline-block;
-  height: 100vh;
-  width: 275px;
-  position: absolute;
+  height: calc(100vh - 6px);
+  vertical-align: top;
+  position: relative;
   background: #e3ddd3;
+  padding: 1em;
+  overflow-y: auto;
 }
 .Sidebar .topLevel {
+  display: flex;
   height: 3em;
-  display: block;
-  text-align: center;
-  vertical-align: middle;
-  border: 1px solid;
+  border: 3px solid red;
+  margin-top: 1em;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+}
+.Sidebar .topLevel:hover {
+  background: #3a3642;
+  color: #ece5d8;
+  cursor: pointer;
 }
 .Sidebar .subLevel {
-  display: none;
+  display: block;
+  background: white;
+  border: 25px solid transparent;
+  border-image: url('../../assets/img/whitecorners.png') 40% stretch;
+}
+.Sidebar .divider {
+  background-image: url('../../assets/img/line.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 3em;
+  margin-top: 1em;
 }
 .Sidebar .transformerDay {
   cursor: pointer;
@@ -336,5 +318,8 @@
 }
 .Sidebar .characterTracker:hover {
   color: blue;
+}
+.Sidebar::-webkit-scrollbar {
+  background: #3a3642;
 }
 /*# sourceMappingURL=App.css.map */

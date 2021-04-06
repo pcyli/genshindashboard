@@ -33,10 +33,16 @@ export default class Sidebar extends React.Component {
             <div className='subLevel'>
                 {this.generateCodeItems(codes)}
             </div>
+
+            <div className='divider'> </div>
+
             <TransformerChanger stateManager={stateManager} calendarDays={calendarDays} />
             <CharacterTracker stateManager={stateManager} />
-            <div className='topLevel'><p>Build</p></div>
-            <div className='topLevel'><p>Calculator</p></div>
+
+            <div className='divider'> </div>
+
+            <SidebarItem text={'Build'} />
+            <SidebarItem text={'Calculator'} />
         </div>
         );
     }

@@ -8,12 +8,7 @@ export default class CalendarItem extends React.Component {
 
         return (
             <div className="CalendarItem">
-                <div className="frame">
-                    <div className="corner top left"> </div>
-                    <div className="corner top right"> </div>
-                    <div className="corner bottom left"> </div>
-                    <div className="corner bottom right"> </div>
-                </div>
+                <div className="frame"> </div>
                 <CalendarTop day={day} />
                 <CalendarBottom day={day} config={userConfig} />
             </div>
