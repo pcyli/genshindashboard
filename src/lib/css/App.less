@@ -1,3 +1,6 @@
+@asset-location: '../../assets';
+@primogem-location: '@{asset-location}/img/primogem.png';
+
 @genshin-lightgrey: rgb(236,229,216);
 @genshin-grey: rgb(227,221,211);
 @genshin-darkgrey: rgb(219,209,189);
@@ -27,6 +30,14 @@
   width: 100vw;
   //font-family: genshin-font, sans-serif;
   background-color: @genshin-blue;
+}
+
+.primogem {
+  display: inline-block;
+  height: 1em;
+  width: 1em;
+  background-image: url(@primogem-location);
+  background-size: contain;
 }
 
 .Calendar {

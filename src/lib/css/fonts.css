@@ -1,0 +1,11 @@
+/*@path-fonts: '/fonts';
+
+@font-face {
+  font-family: 'genshin-font';
+  src: url(`${@path-fonts}/HYWenHei.tff`) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+*/
+/*# sourceMappingURL=fonts.css.map */

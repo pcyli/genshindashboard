@@ -1,7 +1,11 @@
+@asset-img-location: '@{asset-location}/img';
+@white-corner: '@{asset-img-location}/whitecorners.png';
+@corner: '@{asset-img-location}/line.png';
+
 @interactive: {
   cursor: pointer;
 
-  &:hover {
+  &:hover, &.selected {
     color: blue;
   }
 }
@@ -36,11 +40,13 @@
     display: block;
     background: white;
     border: 25px solid transparent;
-    border-image: url('../../assets/img/whitecorners.png') 40% stretch;
+    border-image: url(@white-corner) 40% stretch;
+
+    text-align: center;
   }
 
   .divider {
-    background-image: url('../../assets/img/line.png');
+    background-image: url(@corner);
     background-repeat: no-repeat;
     background-position: center;
     width: 100%;

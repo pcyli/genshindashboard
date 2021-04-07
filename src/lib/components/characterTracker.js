@@ -19,7 +19,7 @@ export default class CharacterTracker extends React.Component {
 
     toggleCharacterTracking = characterName => {
         let stateManager = this.props.stateManager,
-            trackedCharacters = stateManager.getUserConfig().trackedCharacters,
+            { trackedCharacters } = stateManager.getUserConfig(),
             newConfig;
 
         if (trackedCharacters.includes(characterName)) {
@@ -33,22 +33,25 @@ export default class CharacterTracker extends React.Component {
     }
 
     generateCharacterItems = characterNames => {
-        let ulCharacters = [];
-        let userConfig = this.props.stateManager.getUserConfig().trackedCharacters;
+        let outputCharacters = [];
+        let { trackedCharacters } = this.props.stateManager.getUserConfig();
 
         characterNames.forEach(characterName => {
-            ulCharacters.push(
+            let isTracked = trackedCharacters.includes(characterName);
+
+            outputCharacters.push(
                 <div
-                    className='characterTracker'
+                    className={`characterTracker ${isTracked && 'selected'}`}
                     onClick={ () => { this.toggleCharacterTracking(characterName); } }
                     key = {characterName}
                 >
-                    {userConfig.includes(characterName) && '> '}{characterName}
+                    {isTracked && <div className='primogem'/> }
+                    {characterName}
                 </div>
             );
-        })
+        });
 
-        return ulCharacters;
+        return outputCharacters;
     }
 
     render () {

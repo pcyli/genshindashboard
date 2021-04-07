@@ -33,7 +33,7 @@ export default function StateManager() {
 
     useEffect(() => {
         setSavedUserConfig(userConfig);
-    }, [userConfig])
+    }, [userConfig]);
 
     return {
         getUserConfig,

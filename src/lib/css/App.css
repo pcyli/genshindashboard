@@ -17,6 +17,13 @@
   width: 100vw;
   background-color: #3a3642;
 }
+.primogem {
+  display: inline-block;
+  height: 1em;
+  width: 1em;
+  background-image: url('../../assets/img/primogem.png');
+  background-size: contain;
+}
 .Calendar {
   width: calc(100vw - 275px);
 }
@@ -298,6 +305,7 @@
   background: white;
   border: 25px solid transparent;
   border-image: url('../../assets/img/whitecorners.png') 40% stretch;
+  text-align: center;
 }
 .Sidebar .divider {
   background-image: url('../../assets/img/line.png');
@@ -310,13 +318,15 @@
 .Sidebar .transformerDay {
   cursor: pointer;
 }
-.Sidebar .transformerDay:hover {
+.Sidebar .transformerDay:hover,
+.Sidebar .transformerDay.selected {
   color: blue;
 }
 .Sidebar .characterTracker {
   cursor: pointer;
 }
-.Sidebar .characterTracker:hover {
+.Sidebar .characterTracker:hover,
+.Sidebar .characterTracker.selected {
   color: blue;
 }
 .Sidebar::-webkit-scrollbar {

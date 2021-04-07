@@ -4,13 +4,16 @@ export default class TransformerChanger extends React.Component {
     generateTransformerDayItems = () => {
         let {calendarDays, stateManager} = this.props;
         let outputDays = [];
+        let {transformerDay} = stateManager.getUserConfig();
 
         calendarDays.forEach(day => {
+            let isSelected = transformerDay === day;
             outputDays.push(
-                <div className='transformerDay'
+                <div className={`transformerDay ${isSelected && 'selected'}`}
                      onClick={() => stateManager.updateUserConfig({transformerDay: day})}
                      key={`transformer${day}`}
                 >
+                    {isSelected && <div className='primogem'/> }
                     {day}
                 </div>)
         });
@@ -18,7 +21,6 @@ export default class TransformerChanger extends React.Component {
     }
 
     render() {
-
         return (
             <>
                 <div className='topLevel'>
