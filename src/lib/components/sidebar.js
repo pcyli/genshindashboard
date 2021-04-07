@@ -22,8 +22,8 @@ export default class Sidebar extends React.Component {
     }
 
     render() {
-        let {calendarDays, checkInURL, codesURL, webEventURL, buildsURL} = this.props.config;
-        let {stateManager} = this.props;
+        const {calendarDays, checkInURL, codesURL, webEventURL, buildsURL} = this.props.config;
+        const {stateManager} = this.props;
 
         return (
         <div className="Sidebar">

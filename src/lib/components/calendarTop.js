@@ -15,18 +15,15 @@ export default class calendarTop extends React.Component {
     }
 
     render () {
-        let day = this.props.day;
+        const { day } = this.props;
 
-        let createMaterialImages = (type) => {
-            let queryHandler,
-                materialNames,
-                materialImages = [];
-
-            queryHandler = this.getQueryHandler(type);
-            materialNames = queryHandler(day, {matchCategories: true});
+        const createMaterialImages = (type) => {
+            const queryHandler = this.getQueryHandler(type),
+                materialNames = queryHandler(day, {matchCategories: true});
+            let materialImages = [];
 
             materialNames.forEach(materialName => {
-                let material = queryHandler(materialName);
+                const material = queryHandler(materialName);
                 materialImages.push(<MaterialImage material={material} key={material.name} />)
             });
 

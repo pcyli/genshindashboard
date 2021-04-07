@@ -15,20 +15,20 @@ export default class CalendarBottom extends React.Component {
     }
 
     createTransformerImage = () => {
-        let {day, config} = this.props;
+        const {day, config} = this.props;
         if (day === config.transformerDay) {
             return <MaterialImage material={{name: 'Parametric Transformer'}} />;
         }
     }
 
     createCharacterImage = () => {
-        let {day, config} = this.props,
+        const {day, config} = this.props,
         dayMaterials = this.getQueryHandler('talent')(day, {matchCategories: true}),
         dayCharacters2D = dayMaterials.map(
-            material => this.getQueryHandler('character')(material, {matchCategories: true})
-        ),
-        dayCharacters = [].concat(...dayCharacters2D),
-        characters = [];
+                                material => this.getQueryHandler('character')(material, {matchCategories: true})
+                            ),
+        dayCharacters = [].concat(...dayCharacters2D);
+        let characters = [];
 
         config.trackedCharacters.forEach(characterName => {
             if (dayCharacters.includes(characterName)) {

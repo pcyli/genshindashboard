@@ -2,12 +2,12 @@ import React from "react";
 
 export default class TransformerChanger extends React.Component {
     generateTransformerDayItems = () => {
-        let {calendarDays, stateManager} = this.props;
+        const {calendarDays, stateManager} = this.props;
         let outputDays = [];
-        let {transformerDay} = stateManager.getUserConfig();
+        const {transformerDay} = stateManager.getUserConfig();
 
         calendarDays.forEach(day => {
-            let isSelected = transformerDay === day;
+            const isSelected = transformerDay === day;
             outputDays.push(
                 <div className={`transformerDay ${isSelected && 'selected'}`}
                      onClick={() => stateManager.updateUserConfig({transformerDay: day})}

@@ -15,7 +15,7 @@ export default class MaterialImage extends React.Component {
     }
 
     render () {
-        let material = this.props.material;
+        const { material } = this.props;
 
         return <div className='MaterialImage'>
             <img src={this.createMaterialImage(material)} alt={material.name} />

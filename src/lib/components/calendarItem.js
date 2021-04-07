@@ -4,7 +4,7 @@ import CalendarBottom from "./calendarBottom";
 
 export default class CalendarItem extends React.Component {
     render () {
-        let {day, userConfig} = this.props;
+        const {day, userConfig} = this.props;
 
         return (
             <div className="CalendarItem">

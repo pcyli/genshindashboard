@@ -11,7 +11,7 @@ export default class Calendar extends React.Component {
     }
 
     render () {
-        let {displayOrder, userConfig} = this.props;
+        const {displayOrder, userConfig} = this.props;
 
         return (<div className="Calendar">
             {this.generateCalendarItems(displayOrder, userConfig)}

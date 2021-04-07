@@ -2,24 +2,24 @@ import { useState, useEffect } from 'react';
 import config from '../data/config.json';
 
 export default function StateManager() {
-    let { defaultState } = config;
+    const { defaultState } = config;
 
-    let getUserConfig = () => userConfig;
+    const getUserConfig = () => userConfig;
 
-    let setSavedUserConfig = (config) => {
+    const setSavedUserConfig = (config) => {
         localStorage.setItem('config', JSON.stringify(config));
     }
 
-    let updateUserConfig = (newValue) => {
+    const updateUserConfig = (newValue) => {
         let updatedUserConfig = {...userConfig, ...newValue};
         setUserConfigState(updatedUserConfig);
     }
 
-    let getSavedUserConfig = () => {
+    const getSavedUserConfig = () => {
         return JSON.parse(localStorage.getItem('config'));
     }
 
-    let loadUserConfig = () => {
+    const loadUserConfig = () => {
         let storedUserConfig = getSavedUserConfig();
 
         if (storedUserConfig) {

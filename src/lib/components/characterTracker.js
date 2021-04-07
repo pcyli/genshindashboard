@@ -18,9 +18,9 @@ export default class CharacterTracker extends React.Component {
     }
 
     toggleCharacterTracking = characterName => {
-        let stateManager = this.props.stateManager,
-            { trackedCharacters } = stateManager.getUserConfig(),
-            newConfig;
+        const stateManager = this.props.stateManager,
+            { trackedCharacters } = stateManager.getUserConfig();
+        let newConfig;
 
         if (trackedCharacters.includes(characterName)) {
             newConfig = [...trackedCharacters];
@@ -34,7 +34,7 @@ export default class CharacterTracker extends React.Component {
 
     generateCharacterItems = characterNames => {
         let outputCharacters = [];
-        let { trackedCharacters } = this.props.stateManager.getUserConfig();
+        const { trackedCharacters } = this.props.stateManager.getUserConfig();
 
         characterNames.forEach(characterName => {
             let isTracked = trackedCharacters.includes(characterName);
@@ -55,7 +55,7 @@ export default class CharacterTracker extends React.Component {
     }
 
     render () {
-        let characterNames = this.getQueryHandler('character')('names', {matchCategories: true});
+        const characterNames = this.getQueryHandler('character')('names', {matchCategories: true});
         this.removeFromArray(characterNames, 'Aether');
         this.removeFromArray(characterNames, 'Lumine');
 
