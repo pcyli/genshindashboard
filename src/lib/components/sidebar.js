@@ -22,7 +22,7 @@ export default class Sidebar extends React.Component {
     }
 
     render() {
-        let {calendarDays, checkInURL, codesURL, webEventURL} = this.props.config;
+        let {calendarDays, checkInURL, codesURL, webEventURL, buildsURL} = this.props.config;
         let {stateManager} = this.props;
 
         return (
@@ -41,7 +41,7 @@ export default class Sidebar extends React.Component {
 
             <div className='divider'> </div>
 
-            <SidebarItem text={'Build'} />
+            <SidebarItem text={'Build'} handler={() => {window.open(buildsURL);}}/>
             <SidebarItem text={'Calculator'} />
         </div>
         );
