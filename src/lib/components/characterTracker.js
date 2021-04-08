@@ -1,7 +1,7 @@
-import React from 'react';
 import genshin from "genshin-db";
+import sidebarMenu from "./sidebarMenu";
 
-export default class CharacterTracker extends React.Component {
+export default class CharacterTracker extends sidebarMenu {
     removeFromArray (array, remove) {
         array.splice(array.indexOf(remove), 1);
     }
@@ -32,9 +32,13 @@ export default class CharacterTracker extends React.Component {
         stateManager.updateUserConfig({trackedCharacters : newConfig});
     }
 
-    generateCharacterItems = characterNames => {
-        let outputCharacters = [];
+    generateCharacterItems = () => {
+        const characterNames = this.getQueryHandler('character')('names', {matchCategories: true});
         const { trackedCharacters } = this.props.stateManager.getUserConfig();
+        let outputCharacters = [];
+
+        this.removeFromArray(characterNames, 'Aether');
+        this.removeFromArray(characterNames, 'Lumine');
 
         characterNames.forEach(characterName => {
             let isTracked = trackedCharacters.includes(characterName);
@@ -55,19 +59,9 @@ export default class CharacterTracker extends React.Component {
     }
 
     render () {
-        const characterNames = this.getQueryHandler('character')('names', {matchCategories: true});
-        this.removeFromArray(characterNames, 'Aether');
-        this.removeFromArray(characterNames, 'Lumine');
-
-        return (
-            <>
-                <div className='topLevel'>
-                    Character tracker
-                </div>
-                <div className='subLevel'>
-                    {this.generateCharacterItems(characterNames)}
-                </div>
-            </>
-        );
+        return this.createMenu(
+                    'Character Tracker',
+                    this.generateCharacterItems()
+                );
     }
 }

@@ -1,7 +1,8 @@
-import React from "react";
+import sidebarMenu from "./sidebarMenu";
 
-export default class TransformerChanger extends React.Component {
-    generateTransformerDayItems = () => {
+export default class TransformerChanger extends sidebarMenu {
+
+    createTransformerDayItems = () => {
         const {calendarDays, stateManager} = this.props;
         let outputDays = [];
         const {transformerDay} = stateManager.getUserConfig();
@@ -21,15 +22,9 @@ export default class TransformerChanger extends React.Component {
     }
 
     render() {
-        return (
-            <>
-                <div className='topLevel'>
-                    Set Transformer
-                </div>
-                <div className='subLevel'>
-                    {this.generateTransformerDayItems()}
-                </div>
-            </>
-        );
+        return this.createMenu(
+                    'Set Transformer',
+                    this.createTransformerDayItems()
+                );
     }
 }
