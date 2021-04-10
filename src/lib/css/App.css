@@ -175,6 +175,14 @@
     background-image: radial-gradient(#6087f6 0%, transparent 30%);
   }
 }
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-359deg);
+  }
+}
 .Calendar {
   display: inline-block;
   height: 100vh;
@@ -275,6 +283,25 @@
   margin: 0 auto;
 }
 .Calendar .CalendarItem .CalendarBottom .CharacterIcon img {
+  height: 100%;
+}
+.Calendar .CalendarItem .CalendarBottom .SpiralAbyss {
+  display: inline-block;
+  width: 33%;
+  height: 9vh;
+  margin: 0 auto;
+  animation: rotation 60s infinite linear;
+}
+.Calendar .CalendarItem .CalendarBottom .SpiralAbyss img {
+  height: 100%;
+}
+.Calendar .CalendarItem .CalendarBottom .Reset {
+  display: inline-block;
+  width: 33%;
+  height: 9vh;
+  margin: 0 auto;
+}
+.Calendar .CalendarItem .CalendarBottom .Reset img {
   height: 100%;
 }
 .Sidebar {

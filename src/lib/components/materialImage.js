@@ -1,7 +1,7 @@
-import React from 'react';
+import EntityImage from "./entityImage";
 
-export default class MaterialImage extends React.Component {
-    createMaterialImage (material) {
+export default class MaterialImage extends EntityImage {
+    createMaterialURL (material) {
         let highMaterialName = material['5starname'] || material['4starname'] ;
 
         if (!highMaterialName) {
@@ -10,15 +10,14 @@ export default class MaterialImage extends React.Component {
 
         return `img/items/Item_${this.convertURISafe(highMaterialName)}.png`;
     }
-    convertURISafe (input) {
-        return escape(input.replace(/["']/g, '').split(' ').join('_'));
-    }
 
     render () {
         const { material } = this.props;
 
-        return <div className='MaterialImage'>
-            <img src={this.createMaterialImage(material)} alt={material.name} />
-        </div>
+        return this.createEntityImage(
+            this.createMaterialURL(material),
+            'MaterialImage',
+            material.name
+        );
     }
 }

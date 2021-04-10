@@ -1,4 +1,4 @@
-@import url('glow-animation');
+@import url('animations');
 
 @thin: 1px;
 @thin_line: @thin solid;
@@ -122,6 +122,15 @@
 
       .CharacterIcon {
           @material-size();
+      }
+
+      .SpiralAbyss {
+        @material-size();
+        animation: rotation 60s infinite linear;
+      }
+
+      .Reset {
+        @material-size();
       }
     }
   }

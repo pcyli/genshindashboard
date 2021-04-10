@@ -2,19 +2,19 @@ import React from 'react';
 import CalendarItem from "./calendarItem";
 
 export default class Calendar extends React.Component {
-    generateCalendarItems = (days, userConfig) => {
+    generateCalendarItems = () => {
+        const {displayOrder, config, userConfig} = this.props;
+
         let calendarItems = [];
-        days.forEach(day => {
-            calendarItems.push(<CalendarItem day={day} userConfig={userConfig} key={day}/>)
+        displayOrder.forEach(date => {
+            calendarItems.push(<CalendarItem date={date} config={config} userConfig={userConfig} key={date.getDay()}/>)
         });
         return calendarItems;
     }
 
     render () {
-        const {displayOrder, userConfig} = this.props;
-
         return (<div className="Calendar">
-            {this.generateCalendarItems(displayOrder, userConfig)}
+            {this.generateCalendarItems()}
         </div>);
     }
 }

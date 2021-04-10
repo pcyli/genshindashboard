@@ -9,9 +9,22 @@ import './lib/css/days.css';
 
 
 export default function App () {
-    let {calendarDays} = config,
+    const addDays = function(startDate, days) {
+        let date = new Date(startDate.valueOf());
+        date.setDate(date.getDate() + days);
+        return date;
+    }
+
+    const currentDay = new Date();
+    let displayOrder = [];
+
+    for (let i = 0; i < 6; ++i) {
+        displayOrder.push(addDays(currentDay,i));
+    }
+
+    /*let {calendarDays} = config;
         currentDay = (new Date()).getDay(),
-        displayOrder = calendarDays.slice(currentDay, calendarDays.length).concat(calendarDays.slice(0, currentDay));
+        displayOrder = calendarDays.slice(currentDay, calendarDays.length).concat(calendarDays.slice(0, currentDay));*/
 
     let stateManager = StateManager();
 
@@ -19,7 +32,7 @@ export default function App () {
 
     return (
         <div className="App">
-            <Calendar displayOrder={displayOrder} userConfig={userConfig} />
+            <Calendar displayOrder={displayOrder} userConfig={userConfig} config={config} />
             <Sidebar userConfig={userConfig} config={config} stateManager={stateManager}/>
         </div>
     );
