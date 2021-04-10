@@ -18,7 +18,7 @@ export default function App () {
     const currentDay = new Date();
     let displayOrder = [];
 
-    for (let i = 0; i < 6; ++i) {
+    for (let i = 0; i < 7; ++i) {
         displayOrder.push(addDays(currentDay,i));
     }
 
