@@ -18,20 +18,8 @@ export default class CalendarBottom extends React.Component {
     createTransformerImage = () => {
         const {day, userConfig} = this.props;
         if (day === userConfig.transformerDay) {
-            return <MaterialImage material={{name: 'Parametric Transformer'}} />;
+            return <MaterialImage material={{name: 'Parametric Transformer'}}/>;
         }
-    }
-
-    createResetImage = () => {
-        const { day } = this.props;
-
-        if ( day === 'Sunday') {
-            return <EntityImage imageSrc='img/icon/Icon_Sojourners_Battle_Pass.png'
-                                classNames='Reset'
-                                entityName='Reset'
-                    />;
-        }
-
     }
 
     createSpiralAbyssImage = () => {
@@ -74,7 +62,6 @@ export default class CalendarBottom extends React.Component {
         return (
             <div className="CalendarBottom">
                 {this.createTransformerImage()}
-                {this.createResetImage()}
                 {this.createSpiralAbyssImage()}
                 {this.createCharacterImage()}
             </div>

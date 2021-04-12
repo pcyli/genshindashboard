@@ -9,9 +9,9 @@ export default class CalendarItem extends React.Component {
 
 
         return (
-            <div className="CalendarItem">
+            <div className={['CalendarItem', day].join(' ')}>
                 <div className="frame"> </div>
-                <CalendarTop day={day} />
+                <CalendarTop day={day} config={config} />
                 <CalendarBottom day={day} date={date} config={config} userConfig={userConfig} />
             </div>
         );

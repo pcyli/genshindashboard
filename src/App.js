@@ -9,6 +9,7 @@ import './lib/css/days.css';
 
 
 export default function App () {
+
     const addDays = function(startDate, days) {
         let date = new Date(startDate.valueOf());
         date.setDate(date.getDate() + days);
@@ -22,13 +23,8 @@ export default function App () {
         displayOrder.push(addDays(currentDay,i));
     }
 
-    /*let {calendarDays} = config;
-        currentDay = (new Date()).getDay(),
-        displayOrder = calendarDays.slice(currentDay, calendarDays.length).concat(calendarDays.slice(0, currentDay));*/
-
-    let stateManager = StateManager();
-
-    let userConfig = stateManager.getUserConfig();
+    const stateManager = StateManager(),
+          userConfig   = stateManager.getUserConfig();
 
     return (
         <div className="App">

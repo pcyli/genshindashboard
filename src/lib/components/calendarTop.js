@@ -14,6 +14,19 @@ export default class calendarTop extends React.Component {
         }
     }
 
+    createResetInfo = () => {
+        const { day, config : { resetDay } } = this.props;
+
+        if ( day === resetDay) {
+            return (
+                <div className='Reset'>
+                    Reset Day!
+                </div>
+            );
+        }
+
+    }
+
     render () {
         const { day } = this.props;
 
@@ -30,7 +43,7 @@ export default class calendarTop extends React.Component {
             return materialImages;
         }
 
-        return <div className={["CalendarTop", day].join(' ')}>
+        return <div className="CalendarTop">
             <div className="day">{day}</div>
             <div className="container">
                 { createMaterialImages('talent') }
@@ -38,6 +51,7 @@ export default class calendarTop extends React.Component {
             <div className="container">
                 { createMaterialImages('weapon') }
             </div>
+            {this.createResetInfo()}
         </div>;
     }
 }

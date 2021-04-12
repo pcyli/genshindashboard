@@ -1,25 +1,26 @@
-.Sunday {
+/*Top Portion Backgrounds*/
+.Sunday .CalendarTop {
   background-image: url('../../assets/bkgd/01.jpg');
 }
-.Monday {
+.Monday .CalendarTop {
   background-image: url('../../assets/bkgd/02.jpg');
 }
-.Tuesday {
+.Tuesday .CalendarTop {
   background-image: url('../../assets/bkgd/05.jpg');
 }
-.Wednesday {
+.Wednesday .CalendarTop {
   background-image: url('../../assets/bkgd/04.jpg');
 }
-.Thursday {
+.Thursday .CalendarTop {
   background-image: url('../../assets/bkgd/03.jpg');
 }
-.Friday {
+.Friday .CalendarTop {
   background-image: url('../../assets/bkgd/06.jpg');
 }
-.Saturday {
+.Saturday .CalendarTop {
   background-image: url('../../assets/bkgd/07.jpg');
 }
-[class$='day'] {
+[class$='day'] .CalendarTop {
   background-position: center;
 }
 /*# sourceMappingURL=days.css.map */
