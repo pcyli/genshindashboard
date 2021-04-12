@@ -5,4 +5,5 @@ This project was started because theres just too many fiddly things to track in 
 ## To Do
 
 ->Popup Info for location of Domains
+
 ->Note for which talent book type displayed on top of character tracker
