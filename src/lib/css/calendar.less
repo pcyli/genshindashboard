@@ -127,7 +127,7 @@
         background: @genshin-grey;
       }
 
-      .MaterialImage {
+      .transformer {
         @material-size();
 
         img {
@@ -137,7 +137,21 @@
       }
 
       .CharacterIcon {
+          position: relative;
           @material-size();
+
+        .MaterialImage {
+          position: absolute;
+          width: 45%;
+          bottom: -2px;
+          right: 0;
+          background: fade(@genshin-darkgrey, 65%);
+          border-radius: 15px;
+
+          img {
+            width: 100%;
+          }
+        }
       }
 
       .SpiralAbyss {

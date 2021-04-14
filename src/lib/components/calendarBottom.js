@@ -1,6 +1,6 @@
 import React from 'react';
-import MaterialImage from "./materialImage";
 import genshin from "genshin-db";
+import MaterialImage from "./materialImage";
 import EntityImage from "./entityImage";
 
 export default class CalendarBottom extends React.Component {
@@ -18,7 +18,9 @@ export default class CalendarBottom extends React.Component {
     createTransformerImage = () => {
         const {day, userConfig} = this.props;
         if (day === userConfig.transformerDay) {
-            return <MaterialImage material={{name: 'Parametric Transformer'}}/>;
+            return <MaterialImage material={{name: 'Parametric Transformer'}}
+                                  classNames={'transformer'}
+                    />;
         }
     }
 
@@ -46,10 +48,12 @@ export default class CalendarBottom extends React.Component {
         userConfig.trackedCharacters.forEach(characterName => {
             if (dayCharacters.includes(characterName)) {
                 let character = this.getQueryHandler('character')(characterName);
+                let material = this.getQueryHandler('talent')(character.talentmaterialtype);
 
                 characters.push(
                     <div className='CharacterIcon' key={`calBotCharIcon${characterName}`}>
                         <img src={character.images.icon} alt={characterName}/>
+                        <MaterialImage material={material} key={material.name} />
                     </div>
                     );
             }

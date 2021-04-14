@@ -12,11 +12,16 @@ export default class MaterialImage extends EntityImage {
     }
 
     render () {
-        const { material } = this.props;
+        const { material, classNames } = this.props;
+        let classes = [];
+
+        if (classNames) {
+            classes = Array.isArray(classNames) ? classNames : [classNames];
+        }
 
         return this.createEntityImage(
             this.createMaterialURL(material),
-            'MaterialImage',
+            ['MaterialImage', ...classes],
             material.name
         );
     }
