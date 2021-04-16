@@ -19,6 +19,10 @@
   padding: 1em;
   overflow-y: auto;
 
+  &::-webkit-scrollbar {
+    background: @genshin-blue;
+  }
+
   .topLevel {
     display: flex;
     height: 3em;
@@ -61,7 +65,12 @@
     @interactive();
   }
 
-  &::-webkit-scrollbar {
-    background: @genshin-blue;
+  .code {
+    text-align: center;
+    border: none;
+
+    &:hover {
+      @interactive();
+    }
   }
 }

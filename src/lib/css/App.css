@@ -329,6 +329,9 @@
   padding: 1em;
   overflow-y: auto;
 }
+.Sidebar::-webkit-scrollbar {
+  background: #3a3642;
+}
 .Sidebar .topLevel {
   display: flex;
   height: 3em;
@@ -372,7 +375,15 @@
 .Sidebar .characterTracker.selected {
   color: blue;
 }
-.Sidebar::-webkit-scrollbar {
-  background: #3a3642;
+.Sidebar .code {
+  text-align: center;
+  border: none;
+}
+.Sidebar .code:hover {
+  cursor: pointer;
+}
+.Sidebar .code:hover:hover,
+.Sidebar .code:hover.selected {
+  color: blue;
 }
 /*# sourceMappingURL=App.css.map */
