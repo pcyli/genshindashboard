@@ -6,4 +6,8 @@ This project was started because theres just too many fiddly things to track in 
 
 ->Popup Info for location of Domains
 
-->Note for which talent book type displayed on top of character tracker
+->Popup Info for characters
+
+->Add tracker support for weapons
+
+->Move collapsable menu state to top level
