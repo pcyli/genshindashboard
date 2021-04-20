@@ -20,36 +20,35 @@ export default class calendarTop extends React.Component {
         if ( day === resetDay) {
             return (
                 <div className='Reset'>
-                    Reset Day!
+                    Incoming Reset Day!
                 </div>
             );
         }
+    }
 
+    createMaterialImages = (type, day) => {
+        const queryHandler = this.getQueryHandler(type),
+            materialNames = queryHandler(day, {matchCategories: true});
+        let materialImages = [];
+
+        materialNames.forEach(materialName => {
+            const material = queryHandler(materialName);
+            materialImages.push(<MaterialImage material={material} key={material.name} />)
+        });
+
+        return materialImages;
     }
 
     render () {
         const { day } = this.props;
 
-        const createMaterialImages = (type) => {
-            const queryHandler = this.getQueryHandler(type),
-                materialNames = queryHandler(day, {matchCategories: true});
-            let materialImages = [];
-
-            materialNames.forEach(materialName => {
-                const material = queryHandler(materialName);
-                materialImages.push(<MaterialImage material={material} key={material.name} />)
-            });
-
-            return materialImages;
-        }
-
         return <div className="CalendarTop">
             <div className="day">{day}</div>
             <div className="container">
-                { createMaterialImages('talent') }
+                { this.createMaterialImages('talent', day) }
             </div>
             <div className="container">
-                { createMaterialImages('weapon') }
+                { this.createMaterialImages('weapon', day) }
             </div>
             {this.createResetInfo()}
         </div>;
