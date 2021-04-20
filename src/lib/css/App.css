@@ -222,19 +222,22 @@
 }
 .Calendar .CalendarItem .CalendarTop .day {
   width: 100%;
-  text-align: center;
-  font-size: 2em;
-  color: white;
+  padding-bottom: 0.1em;
   margin-bottom: 2em;
   background: rgba(0, 0, 0, 0.6);
   border-radius: 10px 10px 0 0;
+  color: white;
+  font-family: genshin-font, Roboto, sans-serif;
+  font-size: 1.4em;
+  text-align: center;
 }
 .Calendar .CalendarItem .CalendarTop .container {
   display: flex;
   flex-wrap: wrap;
 }
 .Calendar .CalendarItem .CalendarTop .container .MaterialImage {
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
   width: 33%;
   height: 9vh;
   margin: 0 auto;
@@ -276,7 +279,8 @@
   background: #e3ddd3;
 }
 .Calendar .CalendarItem .CalendarBottom .transformer {
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
   width: 33%;
   height: 9vh;
   margin: 0 auto;
@@ -291,7 +295,8 @@
 }
 .Calendar .CalendarItem .CalendarBottom .CharacterIcon {
   position: relative;
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
   width: 33%;
   height: 9vh;
   margin: 0 auto;
@@ -311,7 +316,8 @@
   width: 100%;
 }
 .Calendar .CalendarItem .CalendarBottom .SpiralAbyss {
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
   width: 33%;
   height: 9vh;
   margin: 0 auto;
@@ -340,6 +346,9 @@
   justify-content: center;
   align-items: center;
   text-transform: uppercase;
+  font-family: genshin-font, Roboto, sans-serif;
+  font-size: 0.9em;
+  color: darkslateblue;
 }
 .Sidebar .topLevel:hover {
   background: #3a3642;
@@ -352,6 +361,7 @@
   border: 25px solid transparent;
   border-image: url('../../assets/img/whitecorners.png') 40% stretch;
   text-align: center;
+  font-size: 14px;
 }
 .Sidebar .divider {
   background-image: url('../../assets/img/line.png');
@@ -385,5 +395,10 @@
 .Sidebar .code:hover:hover,
 .Sidebar .code:hover.selected {
   color: blue;
+}
+@font-face {
+  font-family: 'genshin-font';
+  src: url('../../assets/fonts/HYWenHei-85W.ttf') format('truetype');
+  font-display: swap;
 }
 /*# sourceMappingURL=App.css.map */

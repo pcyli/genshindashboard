@@ -4,6 +4,7 @@
 @thin_line: @thin solid;
 @thin_dash: @thin dashed;
 
+@gold: rgb(241,205,87);
 @gold-highlight: rgba(255,215,0, 0.6);
 @blue-highlight: rgba(83, 144, 255, 0.6);
 @black-highlight: rgba(0,0,0, 0.6);
@@ -67,12 +68,15 @@
 
       .day {
         width: 100%;
-        text-align: center;
-        font-size: 2em;
-        color: white;
+        padding-bottom: 0.1em;
         margin-bottom: 2em;
         background: @black-highlight;
         border-radius: @card-border-radius @card-border-radius 0 0;
+
+        color: white;
+        font-family: genshin-font, Roboto, sans-serif;
+        font-size: 1.4em;
+        text-align: center;
       }
 
       .container {
