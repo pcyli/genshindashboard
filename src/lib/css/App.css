@@ -238,17 +238,23 @@
 .Calendar .CalendarItem .CalendarTop .container .MaterialImage {
   display: inline-flex;
   justify-content: center;
-  width: 33%;
-  height: 9vh;
+  width: 8vh;
+  height: 8vh;
   margin: 0 auto;
-  background-image: radial-gradient(rgba(83, 144, 255, 0.6) 0%, transparent 60%);
+  background-image: url('../../assets/img/item_min_orange.png');
+  background-position: center;
+  border-radius: 8px;
+  margin-top: 1em;
   cursor: pointer;
+  transition: transform 0.2s;
 }
 .Calendar .CalendarItem .CalendarTop .container .MaterialImage img {
   height: 100%;
 }
 .Calendar .CalendarItem .CalendarTop .container .MaterialImage:hover {
-  background-image: radial-gradient(#ece5d8 0%, #ece5d8 60%, transparent 70%);
+  filter: brightness(115%);
+  transform: scale(1.2);
+  border: 3px solid #ece5d8;
 }
 .Calendar .CalendarItem .CalendarTop .Reset {
   width: 100%;
@@ -281,8 +287,8 @@
 .Calendar .CalendarItem .CalendarBottom .transformer {
   display: inline-flex;
   justify-content: center;
-  width: 33%;
-  height: 9vh;
+  width: 8vh;
+  height: 8vh;
   margin: 0 auto;
 }
 .Calendar .CalendarItem .CalendarBottom .transformer img {
@@ -297,8 +303,8 @@
   position: relative;
   display: inline-flex;
   justify-content: center;
-  width: 33%;
-  height: 9vh;
+  width: 8vh;
+  height: 8vh;
   margin: 0 auto;
 }
 .Calendar .CalendarItem .CalendarBottom .CharacterIcon img {
@@ -318,8 +324,8 @@
 .Calendar .CalendarItem .CalendarBottom .SpiralAbyss {
   display: inline-flex;
   justify-content: center;
-  width: 33%;
-  height: 9vh;
+  width: 8vh;
+  height: 8vh;
   margin: 0 auto;
   animation: rotation 60s infinite linear;
 }
