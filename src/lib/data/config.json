@@ -2,7 +2,7 @@
   "calendarDays" : ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
   "checkInURL"  : "https://webstatic-sea.mihoyo.com/ys/event/signin-sea/index.html?act_id=e202102251931481&lang=en-us",
   "codesURL": "https://genshin.mihoyo.com/m/en/gift",
-  "webEventURL": "https://webstatic-sea.mihoyo.com/ys/event/e20210421-homeland/index.html?token_type=cookie_token&utm_source=Link",
+  "webEventURL": "https://webstatic-sea.mihoyo.com/ys/event/e20210428invite/index.html?utm_source=share&utm_medium=link#/GBBEBQJA6N",
   "buildsURL": "https://docs.google.com/spreadsheets/d/1gNxZ2xab1J6o1TuNVWMeLOZ7TPOqrsf3SshP5DLvKzI/pubhtml?gid=654398186#",
   "spiralAbyssResetDays": [1, 16],
   "resetDay": "Sunday",
