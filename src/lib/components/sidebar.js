@@ -17,13 +17,17 @@ export default class Sidebar extends React.Component {
 
             <div className='divider'> </div>
 
-            <TransformerChanger stateManager={stateManager} calendarDays={calendarDays} />
-            <CharacterTracker stateManager={stateManager} />
+            <SidebarItem text={'Builds'} handler={() => {window.open(buildsURL);}}/>
 
             <div className='divider'> </div>
 
-            <SidebarItem text={'Build'} handler={() => {window.open(buildsURL);}}/>
+            <CharacterTracker stateManager={stateManager} />
+            <TransformerChanger stateManager={stateManager} calendarDays={calendarDays} />
+
+            <div className='divider'> </div>
+
             <SidebarItem text={'Calculator'} />
+
         </div>
         );
     }

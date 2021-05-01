@@ -245,6 +245,7 @@
   margin: 0 auto;
   background-image: url('../../assets/img/item_min_orange.png');
   background-position: center;
+  background-size: cover;
   border-radius: 8px;
   margin-top: 1em;
   cursor: pointer;
