@@ -29,7 +29,7 @@ export default function StateManager() {
         }
     }
 
-    const [userConfig, setUserConfigState] = useState(loadUserConfig());
+    const [userConfig, setUserConfigState] = useState({...defaultState, ...loadUserConfig()});
 
     useEffect(() => {
         setSavedUserConfig(userConfig);

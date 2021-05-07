@@ -8,6 +8,7 @@
   "resetDay": "Sunday",
   "defaultState" : {
     "trackedCharacters": [" "],
+    "trackedWeapons": [" "],
     "transformerDay": ""
   }
 }

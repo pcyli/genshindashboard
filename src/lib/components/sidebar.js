@@ -3,6 +3,7 @@ import CharacterTracker from "./characterTracker";
 import TransformerChanger from "./transformerChanger";
 import SidebarItem from "./sidebarItem";
 import CodeList from "./codeList";
+import WeaponTracker from "./weaponTracker";
 
 export default class Sidebar extends React.Component {
     render() {
@@ -22,6 +23,7 @@ export default class Sidebar extends React.Component {
             <div className='divider'> </div>
 
             <CharacterTracker stateManager={stateManager} />
+            <WeaponTracker stateManager={stateManager} />
             <TransformerChanger stateManager={stateManager} calendarDays={calendarDays} />
 
             <div className='divider'> </div>
