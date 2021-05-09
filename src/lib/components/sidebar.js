@@ -7,7 +7,7 @@ import WeaponTracker from "./weaponTracker";
 
 export default class Sidebar extends React.Component {
     render() {
-        const {calendarDays, checkInURL, codesURL, webEventURL, buildsURL} = this.props.config;
+        const {calendarDays, checkInURL, codesURL, webEventURL, buildsURL, displayedRarities, ignoredCharacters} = this.props.config;
         const {stateManager} = this.props;
 
         return (
@@ -22,8 +22,8 @@ export default class Sidebar extends React.Component {
 
             <div className='divider'> </div>
 
-            <CharacterTracker stateManager={stateManager} />
-            <WeaponTracker stateManager={stateManager} />
+            <CharacterTracker stateManager={stateManager} displayedRarities={displayedRarities} ignoredEntities={ignoredCharacters}/>
+            <WeaponTracker stateManager={stateManager} displayedRarities={displayedRarities}/>
             <TransformerChanger stateManager={stateManager} calendarDays={calendarDays} />
 
             <div className='divider'> </div>

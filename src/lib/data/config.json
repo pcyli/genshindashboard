@@ -5,6 +5,8 @@
   "webEventURL": "https://webstatic-sea.mihoyo.com/ys/event/e20210428invite/index.html?utm_source=share&utm_medium=link#/GBBEBQJA6N",
   "buildsURL": "https://docs.google.com/spreadsheets/d/1gNxZ2xab1J6o1TuNVWMeLOZ7TPOqrsf3SshP5DLvKzI/pubhtml?gid=654398186#",
   "spiralAbyssResetDays": [1, 16],
+  "displayedRarities": [5, 4, 3],
+  "ignoredCharacters": ["Lumine", "Aether"],
   "resetDay": "Sunday",
   "defaultState" : {
     "trackedCharacters": [" "],

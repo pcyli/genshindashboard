@@ -387,11 +387,11 @@
 .Sidebar .transformerDay.selected {
   color: blue;
 }
-.Sidebar .characterTracker {
+.Sidebar .tracker {
   cursor: pointer;
 }
-.Sidebar .characterTracker:hover,
-.Sidebar .characterTracker.selected {
+.Sidebar .tracker:hover,
+.Sidebar .tracker.selected {
   color: blue;
 }
 .Sidebar .code {

@@ -1,7 +1,7 @@
 import genshin from "genshin-db";
-import sidebarMenu from "./sidebarMenu";
+import SidebarMenu from "./sidebarMenu";
 
-export default class Tracker extends sidebarMenu {
+export default class Tracker extends SidebarMenu {
     removeFromArray (array, remove) {
         array.splice(array.indexOf(remove), 1);
     }
@@ -14,6 +14,8 @@ export default class Tracker extends sidebarMenu {
                 return genshin.characters;
             case 'weapon':
                 return genshin.weapons;
+            case 'rarity':
+                return genshin.rarity;
             default:
                 throw (new Error('getQueryHandler: No type specified'));
         }
@@ -38,30 +40,37 @@ export default class Tracker extends sidebarMenu {
     }
 
     generateItems = (entityType, trackedEntitiesProperty) => {
-        const entityNames = this.getQueryHandler(entityType)('names', {matchCategories: true});
-        const trackedEntities = this.props.stateManager.getUserConfig()[trackedEntitiesProperty];
-        let outputCharacters = [];
+        const {stateManager, displayedRarities, ignoredEntities} = this.props;
+        const queryHandler = this.getQueryHandler(entityType);
+        const trackedEntities = stateManager.getUserConfig()[trackedEntitiesProperty];
+        let output = [];
 
-        this.removeFromArray(entityNames, 'Aether');
-        this.removeFromArray(entityNames, 'Lumine');
+        displayedRarities.forEach(rarity => {
+            let entityNames = queryHandler(rarity, {matchCategories: true}),
+                outputEntities = [];
 
-        entityNames.forEach(entityName => {
-            if (!trackedEntities) debugger;
-            let isTracked = trackedEntities.includes(entityName);
+            if (entityNames) {
+                entityNames.forEach(entityName => {
+                    if (ignoredEntities && ignoredEntities.includes(entityName)) return;
+                    let isTracked = trackedEntities.includes(entityName);
 
-            outputCharacters.push(
-                <div
-                    className={`${trackedEntitiesProperty}Tracker ${isTracked && 'selected'}`}
-                    onClick={ () => { this.toggleTracking(entityName, trackedEntitiesProperty); } }
-                    key = {entityName}
-                >
-                    {isTracked && <div className='primogem'/> }
-                    {entityName}
-                </div>
-            );
+                    outputEntities.push(
+                        <div
+                            className={`tracker ${isTracked && 'selected'}`}
+                            onClick={() => {
+                                this.toggleTracking(entityName, trackedEntitiesProperty);
+                            }}
+                            key={entityName}
+                        >
+                            {isTracked && <div className='primogem'/>}
+                            {entityName}
+                        </div>
+                    );
+                });
+                output.push((new SidebarMenu()).createMenu(rarity, outputEntities));
+            }
         });
-
-        return outputCharacters;
+        return output;
     }
 
     render () {
