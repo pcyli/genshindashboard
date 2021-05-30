@@ -59,7 +59,7 @@ export default class Tracker extends SidebarMenu {
                 debugger;
                 output.push(
                     (new SidebarMenu()).createMenu(
-                        <img src = { this.integrator.getRarityData(rarity) }
+                        <img src = { this.integrator.getRarityImage(rarity) }
                              alt = { rarity }
                         />,
                         outputEntities

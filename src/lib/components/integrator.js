@@ -33,10 +33,11 @@ export default class Integrator {
         return this.getQueryHandler(type)(query, options);
     }
 
-    getRarityData = (query) => {
-        return this.getData(
+    getRarityData = (query) =>
+        this.getData(
             'rarity',
             this.convertQuery('rarity', query)
         );
-    }
+
+    getRarityImage = query => this.getRarityData(query).image;
 }
