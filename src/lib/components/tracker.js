@@ -1,26 +1,16 @@
-import genshin from "genshin-db";
 import SidebarMenu from "./sidebarMenu";
+import Integrator from "./integrator";
 
 export default class Tracker extends SidebarMenu {
+    constructor(props) {
+        super(props);
+
+        this.integrator = new Integrator();
+    }
+
     removeFromArray (array, remove) {
         array.splice(array.indexOf(remove), 1);
     }
-
-    getQueryHandler (type) {
-        switch (type) {
-            case 'talent':
-                return genshin.talentmaterialtypes;
-            case 'character':
-                return genshin.characters;
-            case 'weapon':
-                return genshin.weapons;
-            case 'rarity':
-                return genshin.rarity;
-            default:
-                throw (new Error('getQueryHandler: No type specified'));
-        }
-    }
-
 
     toggleTracking = (entityName, trackedEntitiesProperty) => {
         const stateManager = this.props.stateManager,
@@ -41,12 +31,11 @@ export default class Tracker extends SidebarMenu {
 
     generateItems = (entityType, trackedEntitiesProperty) => {
         const {stateManager, displayedRarities, ignoredEntities} = this.props;
-        const queryHandler = this.getQueryHandler(entityType);
         const trackedEntities = stateManager.getUserConfig()[trackedEntitiesProperty];
         let output = [];
 
         displayedRarities.forEach(rarity => {
-            let entityNames = queryHandler(rarity, {matchCategories: true}),
+            let entityNames = this.integrator.getData(entityType, rarity, {matchCategories: true}),
                 outputEntities = [];
 
             if (entityNames) {
@@ -67,9 +56,18 @@ export default class Tracker extends SidebarMenu {
                         </div>
                     );
                 });
-                output.push((new SidebarMenu()).createMenu(rarity, outputEntities));
+                debugger;
+                output.push(
+                    (new SidebarMenu()).createMenu(
+                        <img src = { this.integrator.getRarityData(rarity) }
+                             alt = { rarity }
+                        />,
+                        outputEntities
+                    )
+                );
             }
         });
+
         return output;
     }
 

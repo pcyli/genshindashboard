@@ -9,6 +9,8 @@ export default class calendarTop extends React.Component {
                 return genshin.talentmaterialtypes;
             case 'weapon':
                 return genshin.weaponmaterialtypes;
+            case 'rarity':
+                return genshin.rarity;
             default:
                 throw (new Error('getQueryHandler: No type specified'));
         }

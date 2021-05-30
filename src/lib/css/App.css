@@ -358,11 +358,15 @@
   font-family: genshin-font, Roboto, sans-serif;
   font-size: 0.9em;
   color: darkslateblue;
+  background: #ece5d8;
 }
 .Sidebar .topLevel:hover {
   background: #3a3642;
   color: #ece5d8;
   cursor: pointer;
+}
+.Sidebar .topLevel img {
+  height: 80%;
 }
 .Sidebar .subLevel {
   display: block;
