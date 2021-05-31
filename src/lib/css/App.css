@@ -189,6 +189,7 @@
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
+  user-select: none;
 }
 .Calendar .CalendarItem {
   height: 100%;
@@ -375,6 +376,9 @@
   border-image: url('../../assets/img/whitecorners.png') 40% stretch;
   text-align: center;
   font-size: 14px;
+}
+.Sidebar .subLevel .subLevel {
+  border-top: 0;
 }
 .Sidebar .divider {
   background-image: url('../../assets/img/line.png');

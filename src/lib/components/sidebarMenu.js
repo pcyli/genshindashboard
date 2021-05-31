@@ -26,4 +26,10 @@ export default class SidebarMenu extends React.Component {
             </>
         );
     }
+
+    render () {
+        const { topLevelText, subLevelItems } = this.props;
+
+        return this.createMenu(topLevelText, subLevelItems);
+    }
 }

@@ -56,14 +56,14 @@ export default class Tracker extends SidebarMenu {
                         </div>
                     );
                 });
-                debugger;
+
                 output.push(
-                    (new SidebarMenu()).createMenu(
-                        <img src = { this.integrator.getRarityImage(rarity) }
-                             alt = { rarity }
-                        />,
-                        outputEntities
-                    )
+                    <SidebarMenu
+                        topLevelText = {<img src = { this.integrator.getRarityImage(rarity) }
+                                             alt = { rarity }
+                                        />}
+                        subLevelItems = { outputEntities }
+                        />
                 );
             }
         });
