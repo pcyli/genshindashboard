@@ -9,8 +9,8 @@
   "ignoredCharacters": ["Lumine", "Aether"],
   "resetDay": "Sunday",
   "defaultState" : {
-    "trackedCharacters": [" "],
-    "trackedWeapons": [" "],
-    "transformerDay": ""
+      "character": [],
+      "weapon": [],
+      "transformerDay": ""
   }
 }

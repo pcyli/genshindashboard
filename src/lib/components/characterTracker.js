@@ -6,7 +6,7 @@ export default class CharacterTracker extends Tracker {
                     'Character Tracker',
                     this.generateItems(
                         'character',
-                        'trackedCharacters'
+                        'character'
                     )
                 );
     }

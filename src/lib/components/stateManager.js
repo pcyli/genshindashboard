@@ -4,7 +4,7 @@ import config from '../data/config.json';
 export default function StateManager() {
     const { defaultState } = config;
 
-    const getUserConfig = () => userConfig;
+    const getUserConfig = (prop) => prop ? userConfig[prop] : userConfig;
 
     const setSavedUserConfig = (config) => {
         localStorage.setItem('config', JSON.stringify(config));

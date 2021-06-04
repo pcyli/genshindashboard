@@ -14,6 +14,8 @@ export default class Integrator {
                 return genshin.characters;
             case 'weapon':
                 return genshin.weapons;
+            case 'material':
+                return genshin.weaponmaterialtypes;
             case 'rarity':
                 return genshin.rarity;
             default:
@@ -30,7 +32,16 @@ export default class Integrator {
     }
 
     getData = (type, query, options) => {
-        return this.getQueryHandler(type)(query, options);
+        let genshinOption;
+
+        switch (options) {
+            case 'all':
+                genshinOption = {matchCategories: true};
+                break;
+            default:
+                break;
+        }
+        return this.getQueryHandler(type)(query, genshinOption);
     }
 
     getRarityData = (query) =>

@@ -6,7 +6,7 @@ export default class WeaponTracker extends Tracker {
                     'Weapon Tracker',
                     this.generateItems(
                         'weapon',
-                        'trackedWeapons'
+                        'weapon'
                     )
                 );
     }

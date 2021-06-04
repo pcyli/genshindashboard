@@ -14,10 +14,11 @@ export default class Tracker extends SidebarMenu {
 
     toggleTracking = (entityName, trackedEntitiesProperty) => {
         const stateManager = this.props.stateManager,
-            trackedEntities  = stateManager.getUserConfig()[trackedEntitiesProperty];
-        let newConfig, newConfigObject = {};
+            trackedEntities  = stateManager.getUserConfig(trackedEntitiesProperty);
+        let newConfig,
+            newConfigObject = {};
 
-        if (trackedEntities.includes(entityName)) {
+        if (trackedEntities.length && trackedEntities.includes(entityName)) {
             newConfig = [...trackedEntities];
             this.removeFromArray(newConfig, entityName);
         } else {
@@ -31,11 +32,11 @@ export default class Tracker extends SidebarMenu {
 
     generateItems = (entityType, trackedEntitiesProperty) => {
         const {stateManager, displayedRarities, ignoredEntities} = this.props;
-        const trackedEntities = stateManager.getUserConfig()[trackedEntitiesProperty];
+        const trackedEntities = stateManager.getUserConfig(trackedEntitiesProperty);
         let output = [];
 
         displayedRarities.forEach(rarity => {
-            let entityNames = this.integrator.getData(entityType, rarity, {matchCategories: true}),
+            let entityNames = this.integrator.getData(entityType, rarity, 'all'),
                 outputEntities = [];
 
             if (entityNames) {
