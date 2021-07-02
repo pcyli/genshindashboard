@@ -9,17 +9,50 @@ export default class Integrator {
     getQueryHandler = (type) => {
         switch (type) {
             case 'talent':
+                return genshin.talents;
+            case 'talentMaterial':
                 return genshin.talentmaterialtypes;
             case 'character':
                 return genshin.characters;
             case 'weapon':
                 return genshin.weapons;
-            case 'material':
+            case 'weaponMaterial':
                 return genshin.weaponmaterialtypes;
             case 'rarity':
                 return genshin.rarity;
             default:
-                throw (new Error('getQueryHandler: No type specified'));
+                throw (new Error('getQueryHandler: Unexpected Type'));
+        }
+    }
+
+    getEntitiesListByMaterial = (type, material) => {
+        switch (type) {
+            case 'character':
+                return this.getData('talent', material, 'all');
+            case 'weapon':
+                return this.getData('weapon', material, 'all');
+            default:
+                throw (new Error('getEntitiesListByMaterial: Unexpected Type'))
+        }
+    }
+
+    getEntityMaterial = (type, entity) => {
+        switch (type) {
+            case 'character':
+                const talentMaterialTypes = this.getData('talentMaterial', 'names', 'all'),
+                      characterTalentCosts = this.getData('talent', entity.name).costs,
+                      characterTalentMaterialName = characterTalentCosts.lvl2[1].name; //extreme hack
+
+                for (const talentMaterial of talentMaterialTypes) {
+                    if (characterTalentMaterialName.includes(talentMaterial)) {
+                        return this.getData('talentMaterial' , talentMaterial);
+                    }
+                }
+                throw (new Error('getEntitiesListByMaterial: Unexpected Talent Material ' + characterTalentMaterialName));
+            case 'weapon':
+                return this.getData('weaponMaterial', entity.weaponmaterialtype);
+            default:
+                throw (new Error('getEntitiesListByMaterial: Unexpected Type'))
         }
     }
 

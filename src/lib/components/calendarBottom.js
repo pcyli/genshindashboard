@@ -32,22 +32,21 @@ export default class CalendarBottom extends React.Component {
     }
 
     createEntityImage = (type) => {
-        const {day, userConfig} = this.props,
-            entityDictionary = {
+        const {day, userConfig} = this.props;
+        const entityDictionary = {
                 'character' :  {
-                    material : 'talent',
-                    propName : 'talentmaterialtype'
+                    material : 'talentMaterial',
+                    list:      'talent'
                 },
                 'weapon' : {
-                    material : 'material',
-                    propName : 'weaponmaterialtype'
+                    material : 'weaponMaterial'
                 }
             },
             dayMaterials = this.integrator.getData(entityDictionary[type].material, day, 'all'),
-            dayEntities2D = dayMaterials.map(
-                material => this.integrator.getData(type, material, 'all')
+            dayEntities2DArray = dayMaterials.map(
+                material => this.integrator.getEntitiesListByMaterial(type, material)
             ),
-            dayEntities = [].concat(...dayEntities2D);
+            dayEntities = [].concat(...dayEntities2DArray);
         let entities = [];
 
         if (!userConfig[type]) debugger;
@@ -55,10 +54,7 @@ export default class CalendarBottom extends React.Component {
         userConfig[type].forEach(entityName => {
             if (dayEntities.includes(entityName)) {
                 let entity = this.integrator.getData(type, entityName);
-                let material = this.integrator.getData(
-                                    entityDictionary[type].material,
-                                    entity[entityDictionary[type].propName]
-                                );
+                let material = this.integrator.getEntityMaterial(type, entity);
 
                 if (!material) debugger;
 
@@ -76,9 +72,9 @@ export default class CalendarBottom extends React.Component {
 
     createCharacterImage = () => {
         const {day, userConfig} = this.props,
-        dayMaterials = this.integrator.getData('talent', day, 'all'),
+        dayMaterials = this.integrator.getData('talentMaterial', day, 'all'),
         dayCharacters2D = dayMaterials.map(
-                                material => this.integrator.getData('character', material, 'all')
+                                material => this.integrator.getData('talent', material, 'all')
                             ),
         dayCharacters = [].concat(...dayCharacters2D);
         let characters = [];
@@ -86,7 +82,7 @@ export default class CalendarBottom extends React.Component {
         userConfig.trackedCharacters.forEach(characterName => {
             if (dayCharacters.includes(characterName)) {
                 let character = this.integrator.getData('character', characterName);
-                let material = this.integrator.getData('talent', character.talentmaterialtype);
+                let material = this.integrator.getData('talentMaterial', character.talentmaterialtype);
 
                 characters.push(
                     <div className='CharacterIcon' key={`calBotCharIcon${characterName}`}>
