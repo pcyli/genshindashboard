@@ -25,6 +25,17 @@ export default class Integrator {
         }
     }
 
+    getMaterialsListByDay = (type, day) => {
+        switch (type) {
+            case 'character':
+                return this.getData('talentMaterial', day, 'all');
+            case 'weapon':
+                return this.getData('weaponMaterial', day, 'all');
+            default:
+                throw (new Error('getMaterialsListByDay: Unexpected Type'))
+        }
+    }
+
     getEntitiesListByMaterial = (type, material) => {
         switch (type) {
             case 'character':
@@ -36,7 +47,7 @@ export default class Integrator {
         }
     }
 
-    getEntityMaterial = (type, entity) => {
+    getEntityAscendMaterial = (type, entity) => {
         switch (type) {
             case 'character':
                 const talentMaterialTypes = this.getData('talentMaterial', 'names', 'all'),
@@ -45,7 +56,7 @@ export default class Integrator {
 
                 for (const talentMaterial of talentMaterialTypes) {
                     if (characterTalentMaterialName.includes(talentMaterial)) {
-                        return this.getData('talentMaterial' , talentMaterial);
+                        return this.getData('talentMaterial', talentMaterial);
                     }
                 }
                 throw (new Error('getEntitiesListByMaterial: Unexpected Talent Material ' + characterTalentMaterialName));

@@ -33,16 +33,7 @@ export default class CalendarBottom extends React.Component {
 
     createEntityImage = (type) => {
         const {day, userConfig} = this.props;
-        const entityDictionary = {
-                'character' :  {
-                    material : 'talentMaterial',
-                    list:      'talent'
-                },
-                'weapon' : {
-                    material : 'weaponMaterial'
-                }
-            },
-            dayMaterials = this.integrator.getData(entityDictionary[type].material, day, 'all'),
+        const dayMaterials = this.integrator.getMaterialsListByDay(type, day),
             dayEntities2DArray = dayMaterials.map(
                 material => this.integrator.getEntitiesListByMaterial(type, material)
             ),
@@ -54,7 +45,7 @@ export default class CalendarBottom extends React.Component {
         userConfig[type].forEach(entityName => {
             if (dayEntities.includes(entityName)) {
                 let entity = this.integrator.getData(type, entityName);
-                let material = this.integrator.getEntityMaterial(type, entity);
+                let material = this.integrator.getEntityAscendMaterial(type, entity);
 
                 if (!material) debugger;
 
