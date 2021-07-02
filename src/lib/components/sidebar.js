@@ -7,7 +7,7 @@ import WeaponTracker from "./weaponTracker";
 
 export default class Sidebar extends React.Component {
     render() {
-        const {calendarDays, checkInURL, codesURL, webEventURL, buildsURL, displayedRarities, ignoredCharacters} = this.props.config;
+        const {calendarDays, checkInURL, codesURL, webEventURL, buildsURL, wishesURL, displayedRarities, ignoredCharacters} = this.props.config;
         const {stateManager} = this.props;
 
         return (
@@ -19,6 +19,7 @@ export default class Sidebar extends React.Component {
             <div className='divider'> </div>
 
             <SidebarItem text={'Builds'} handler={() => {window.open(buildsURL);}}/>
+            <SidebarItem text={'Wishes'} handler={() => {window.open(wishesURL);}}/>
 
             <div className='divider'> </div>
 
