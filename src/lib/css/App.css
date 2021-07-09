@@ -189,6 +189,7 @@
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
+  user-select: none;
 }
 .Calendar .CalendarItem {
   height: 100%;
@@ -219,33 +220,45 @@
   border-bottom: none;
   border-radius: 10px 10px 0 0;
   position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 .Calendar .CalendarItem .CalendarTop .day {
   width: 100%;
-  text-align: center;
-  font-size: 2em;
-  color: white;
+  padding-bottom: 0.1em;
   margin-bottom: 2em;
   background: rgba(0, 0, 0, 0.6);
   border-radius: 10px 10px 0 0;
+  color: white;
+  font-family: genshin-font, Roboto, sans-serif;
+  font-size: 1.4em;
+  text-align: center;
 }
 .Calendar .CalendarItem .CalendarTop .container {
   display: flex;
   flex-wrap: wrap;
 }
 .Calendar .CalendarItem .CalendarTop .container .MaterialImage {
-  display: inline-block;
-  width: 33%;
-  height: 9vh;
+  display: inline-flex;
+  justify-content: center;
+  width: 8vh;
+  height: 8vh;
   margin: 0 auto;
-  background-image: radial-gradient(rgba(83, 144, 255, 0.6) 0%, transparent 60%);
+  background-image: url('../../assets/img/item_min_orange.png');
+  background-position: center;
+  background-size: cover;
+  border-radius: 8px;
+  margin-top: 1em;
   cursor: pointer;
+  transition: transform 0.2s;
 }
 .Calendar .CalendarItem .CalendarTop .container .MaterialImage img {
   height: 100%;
 }
 .Calendar .CalendarItem .CalendarTop .container .MaterialImage:hover {
-  background-image: radial-gradient(#ece5d8 0%, #ece5d8 60%, transparent 70%);
+  filter: brightness(115%);
+  transform: scale(1.2);
+  border: 3px solid #ece5d8;
 }
 .Calendar .CalendarItem .CalendarTop .Reset {
   width: 100%;
@@ -276,9 +289,10 @@
   background: #e3ddd3;
 }
 .Calendar .CalendarItem .CalendarBottom .transformer {
-  display: inline-block;
-  width: 33%;
-  height: 9vh;
+  display: inline-flex;
+  justify-content: center;
+  width: 8vh;
+  height: 8vh;
   margin: 0 auto;
 }
 .Calendar .CalendarItem .CalendarBottom .transformer img {
@@ -291,9 +305,10 @@
 }
 .Calendar .CalendarItem .CalendarBottom .CharacterIcon {
   position: relative;
-  display: inline-block;
-  width: 33%;
-  height: 9vh;
+  display: inline-flex;
+  justify-content: center;
+  width: 8vh;
+  height: 8vh;
   margin: 0 auto;
 }
 .Calendar .CalendarItem .CalendarBottom .CharacterIcon img {
@@ -311,9 +326,10 @@
   width: 100%;
 }
 .Calendar .CalendarItem .CalendarBottom .SpiralAbyss {
-  display: inline-block;
-  width: 33%;
-  height: 9vh;
+  display: inline-flex;
+  justify-content: center;
+  width: 8vh;
+  height: 8vh;
   margin: 0 auto;
   animation: rotation 60s infinite linear;
 }
@@ -340,11 +356,18 @@
   justify-content: center;
   align-items: center;
   text-transform: uppercase;
+  font-family: genshin-font, Roboto, sans-serif;
+  font-size: 0.9em;
+  color: darkslateblue;
+  background: #ece5d8;
 }
 .Sidebar .topLevel:hover {
   background: #3a3642;
   color: #ece5d8;
   cursor: pointer;
+}
+.Sidebar .topLevel img {
+  height: 80%;
 }
 .Sidebar .subLevel {
   display: block;
@@ -352,6 +375,10 @@
   border: 25px solid transparent;
   border-image: url('../../assets/img/whitecorners.png') 40% stretch;
   text-align: center;
+  font-size: 14px;
+}
+.Sidebar .subLevel .subLevel {
+  border-top: 0;
 }
 .Sidebar .divider {
   background-image: url('../../assets/img/line.png');
@@ -368,11 +395,11 @@
 .Sidebar .transformerDay.selected {
   color: blue;
 }
-.Sidebar .characterTracker {
+.Sidebar .tracker {
   cursor: pointer;
 }
-.Sidebar .characterTracker:hover,
-.Sidebar .characterTracker.selected {
+.Sidebar .tracker:hover,
+.Sidebar .tracker.selected {
   color: blue;
 }
 .Sidebar .code {
@@ -385,5 +412,10 @@
 .Sidebar .code:hover:hover,
 .Sidebar .code:hover.selected {
   color: blue;
+}
+@font-face {
+  font-family: 'genshin-font';
+  src: url('../../assets/fonts/HYWenHei-85W.ttf') format('truetype');
+  font-display: swap;
 }
 /*# sourceMappingURL=App.css.map */

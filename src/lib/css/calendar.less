@@ -4,6 +4,7 @@
 @thin_line: @thin solid;
 @thin_dash: @thin dashed;
 
+@gold: rgb(241,205,87);
 @gold-highlight: rgba(255,215,0, 0.6);
 @blue-highlight: rgba(83, 144, 255, 0.6);
 @black-highlight: rgba(0,0,0, 0.6);
@@ -14,9 +15,10 @@
 @card-frame-size: 25px;
 
 @material-size: {
-  display: inline-block;
-  width: 33%;
-  height: 9vh;
+  display: inline-flex;
+  justify-content: center;
+  width: 8vh;
+  height: 8vh;
   margin: 0 auto;
 
   img {
@@ -30,6 +32,7 @@
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
+  user-select: none;
 
   .CalendarItem {
     height: 100%;
@@ -63,15 +66,20 @@
       border-bottom: none;
       border-radius: @card-border-radius @card-border-radius 0 0;
       position: relative;
+      overflow-x: hidden;
+      overflow-y: auto;
 
       .day {
         width: 100%;
-        text-align: center;
-        font-size: 2em;
-        color: white;
+        padding-bottom: 0.1em;
         margin-bottom: 2em;
         background: @black-highlight;
         border-radius: @card-border-radius @card-border-radius 0 0;
+
+        color: white;
+        font-family: genshin-font, Roboto, sans-serif;
+        font-size: 1.4em;
+        text-align: center;
       }
 
       .container {
@@ -80,11 +88,20 @@
 
         .MaterialImage {
           @material-size();
-          background-image: radial-gradient(@blue-highlight 0%, transparent 60%);
+
+          background-image: url('@{asset-img-location}/item_min_orange.png');
+          background-position: center;
+          background-size: cover;
+          border-radius: 8px;
+          margin-top: 1em;
+
           cursor: pointer;
+          transition: transform 0.2s;
 
           &:hover {
-            background-image: radial-gradient(@genshin-lightgrey 0%, @genshin-lightgrey 60%, transparent 70%);
+            filter: brightness(115%);
+            transform: scale(1.2);
+            border: 3px solid @genshin-lightgrey;
           }
 
         }

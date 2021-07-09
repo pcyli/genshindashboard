@@ -1,0 +1,9 @@
+{
+  "rarity" : {
+    "5" : "fivestar",
+    "4" : "fourstar",
+    "3" : "threestar",
+    "2" : "twostar",
+    "1" : "onestar"
+  }
+}

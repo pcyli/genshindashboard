@@ -4,7 +4,7 @@ import config from '../data/config.json';
 export default function StateManager() {
     const { defaultState } = config;
 
-    const getUserConfig = () => userConfig;
+    const getUserConfig = (prop) => prop ? userConfig[prop] : userConfig;
 
     const setSavedUserConfig = (config) => {
         localStorage.setItem('config', JSON.stringify(config));
@@ -29,7 +29,7 @@ export default function StateManager() {
         }
     }
 
-    const [userConfig, setUserConfigState] = useState(loadUserConfig());
+    const [userConfig, setUserConfigState] = useState({...defaultState, ...loadUserConfig()});
 
     useEffect(() => {
         setSavedUserConfig(userConfig);

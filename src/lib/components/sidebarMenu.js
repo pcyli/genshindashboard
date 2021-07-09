@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class sidebarMenu extends React.Component {
+export default class SidebarMenu extends React.Component {
     constructor(props) {
         super(props);
 
@@ -25,5 +25,11 @@ export default class sidebarMenu extends React.Component {
                 { subLevelContent }
             </>
         );
+    }
+
+    render () {
+        const { topLevelText, subLevelItems } = this.props;
+
+        return this.createMenu(topLevelText, subLevelItems);
     }
 }

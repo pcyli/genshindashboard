@@ -1,6 +1,6 @@
-import sidebarMenu from "./sidebarMenu";
+import SidebarMenu from "./sidebarMenu";
 
-export default class TransformerChanger extends sidebarMenu {
+export default class TransformerChanger extends SidebarMenu {
 
     createTransformerDayItems = () => {
         const {calendarDays, stateManager} = this.props;

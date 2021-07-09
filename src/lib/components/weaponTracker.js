@@ -1,12 +1,12 @@
 import Tracker from "./tracker";
 
-export default class CharacterTracker extends Tracker {
+export default class WeaponTracker extends Tracker {
     render () {
         return this.createMenu(
-                    'Character Tracker',
+                    'Weapon Tracker',
                     this.generateItems(
-                        'character',
-                        'character'
+                        'weapon',
+                        'weapon'
                     )
                 );
     }

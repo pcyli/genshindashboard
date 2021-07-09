@@ -1,4 +1,4 @@
-@asset-img-location: '@{asset-location}/img';
+
 @white-corner: '@{asset-img-location}/whitecorners.png';
 @corner: '@{asset-img-location}/line.png';
 
@@ -33,10 +33,19 @@
     align-items: center;
     text-transform: uppercase;
 
+    font-family: genshin-font, Roboto, sans-serif;
+    font-size: 0.9em;
+    color: darkslateblue;
+    background: @genshin-lightgrey;
+
     &:hover {
       background: @genshin-blue;
       color: @genshin-lightgrey;
       cursor: pointer;
+    }
+
+    img {
+      height: 80%;
     }
   }
 
@@ -47,6 +56,12 @@
     border-image: url(@white-corner) 40% stretch;
 
     text-align: center;
+    font-size: 14px;
+
+    .subLevel {
+      border-top: 0;
+    }
+
   }
 
   .divider {
@@ -61,7 +76,7 @@
   .transformerDay {
     @interactive();
   }
-  .characterTracker {
+  .tracker {
     @interactive();
   }
 
