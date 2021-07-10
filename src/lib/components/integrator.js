@@ -32,7 +32,7 @@ export default class Integrator {
             case 'weapon':
                 return this.getData('weaponMaterial', day, 'all');
             default:
-                throw (new Error('getMaterialsListByDay: Unexpected Type'))
+                throw (new Error('getMaterialsListByDay: Unexpected Type'));
         }
     }
 
@@ -43,7 +43,7 @@ export default class Integrator {
             case 'weapon':
                 return this.getData('weapon', material, 'all');
             default:
-                throw (new Error('getEntitiesListByMaterial: Unexpected Type'))
+                throw (new Error('getEntitiesListByMaterial: Unexpected Type'));
         }
     }
 
