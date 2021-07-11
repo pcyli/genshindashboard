@@ -16,8 +16,10 @@ export default class CodeList extends React.Component {
         codes.forEach(code => {
             outputCodes.push(
                 <input className='code'
-                     key={code}
-                     onClick={ (e) => this.copyToClipboard((e.target)) } value={code}
+                    key={code}
+                    onClick={ (e) => this.copyToClipboard((e.target)) }
+                    value={code}
+                    readOnly
                 />
             );
         })

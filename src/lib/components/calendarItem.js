@@ -7,7 +7,6 @@ export default class CalendarItem extends React.Component {
         const {date, config, userConfig} = this.props;
         const day = config.calendarDays[date.getDay()]
 
-
         return (
             <div className={['CalendarItem', day].join(' ')}>
                 <div className="frame"> </div>

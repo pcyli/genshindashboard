@@ -186,10 +186,10 @@
 .Calendar {
   display: inline-block;
   height: 100vh;
-  overflow-x: auto;
-  overflow-y: hidden;
   white-space: nowrap;
   user-select: none;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 .Calendar .CalendarItem {
   height: 100%;

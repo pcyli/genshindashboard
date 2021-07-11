@@ -1,20 +1,10 @@
 import React from 'react';
 import MaterialImage from "./materialImage";
-import genshin from "genshin-db";
+import Integrator from "./integrator";
+import MaterialTooltip from "./materialTooltip";
 
 export default class calendarTop extends React.Component {
-    getQueryHandler (type) {
-        switch (type) {
-            case 'talent':
-                return genshin.talentmaterialtypes;
-            case 'weapon':
-                return genshin.weaponmaterialtypes;
-            case 'rarity':
-                return genshin.rarity;
-            default:
-                throw (new Error('getQueryHandler: No type specified'));
-        }
-    }
+    integrator = new Integrator();
 
     createResetInfo = () => {
         const { day, config : { resetDay } } = this.props;
@@ -29,13 +19,18 @@ export default class calendarTop extends React.Component {
     }
 
     createMaterialImages = (type, day) => {
-        const queryHandler = this.getQueryHandler(type),
-            materialNames = queryHandler(day, {matchCategories: true});
+        const materialNames = this.integrator.getMaterialsListByDay(type, day);
         let materialImages = [];
 
         materialNames.forEach(materialName => {
-            const material = queryHandler(materialName);
-            materialImages.push(<MaterialImage material={material} key={material.name} />)
+            const material = this.integrator.getMaterialData(type, materialName),
+                dataId = `calendarTop_${material.name}`;
+            materialImages.push(
+                <>
+                    <MaterialImage material={material} dataFor={dataId} key={dataId} />
+                    <MaterialTooltip material={material} targetId={dataId} key={`${dataId}_tooltip`} />
+                </>
+            )
         });
 
         return materialImages;
@@ -44,15 +39,17 @@ export default class calendarTop extends React.Component {
     render () {
         const { day } = this.props;
 
-        return <div className="CalendarTop">
-            <div className="day">{day}</div>
-            <div className="container">
-                { this.createMaterialImages('talent', day) }
+        return (
+            <div className="CalendarTop">
+                <div className="day">{day}</div>
+                <div className="container">
+                    { this.createMaterialImages('character', day) }
+                </div>
+                <div className="container">
+                    { this.createMaterialImages('weapon', day) }
+                </div>
+                {this.createResetInfo()}
             </div>
-            <div className="container">
-                { this.createMaterialImages('weapon', day) }
-            </div>
-            {this.createResetInfo()}
-        </div>;
+        );
     }
 }

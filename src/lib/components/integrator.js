@@ -2,11 +2,9 @@ import integrationConfig from '../data/integrationConfig.json';
 import genshin from "genshin-db";
 
 export default class Integrator {
-    constructor() {
-        this.config = integrationConfig;
-    }
+    config = integrationConfig;
 
-    getQueryHandler = (type) => {
+    #getQueryHandler = (type) => {
         switch (type) {
             case 'talent':
                 return genshin.talents;
@@ -33,6 +31,17 @@ export default class Integrator {
                 return this.getData('weaponMaterial', day, 'all');
             default:
                 throw (new Error('getMaterialsListByDay: Unexpected Type'));
+        }
+    }
+
+    getMaterialData = (type, name) => {
+        switch (type) {
+            case 'character':
+                return this.getData('talentMaterial', name);
+            case 'weapon':
+                return this.getData('weaponMaterial', name);
+            default:
+                throw (new Error('getMaterialData: Unexpected Type'));
         }
     }
 
@@ -85,7 +94,7 @@ export default class Integrator {
             default:
                 break;
         }
-        return this.getQueryHandler(type)(query, genshinOption);
+        return this.#getQueryHandler(type)(query, genshinOption);
     }
 
     getRarityData = (query) =>

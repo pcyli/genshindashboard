@@ -2,11 +2,7 @@ import SidebarMenu from "./sidebarMenu";
 import Integrator from "./integrator";
 
 export default class Tracker extends SidebarMenu {
-    constructor(props) {
-        super(props);
-
-        this.integrator = new Integrator();
-    }
+    integrator = new Integrator();
 
     removeFromArray (array, remove) {
         array.splice(array.indexOf(remove), 1);

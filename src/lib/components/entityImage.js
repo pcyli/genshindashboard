@@ -6,12 +6,14 @@ export default class EntityImage extends React.Component {
         return escape(input.replace(/["']/g, '').split(' ').join('_'));
     }
 
-    createEntityImage (imageSrc, classNames, entityName) {
+    createEntityImage (imageSrc, classNames, entityName, dataFor) {
         const classNameString = Array.isArray(classNames) ? classNames.join(' ') : classNames;
 
-        return (<div className={classNameString}>
-            <img src={imageSrc} alt={entityName} />
-        </div>);
+        return (
+            <div className={classNameString} data-tip="" data-for={dataFor}>
+                <img src={imageSrc} alt={entityName} />
+            </div>
+        );
     }
 
     render() {
