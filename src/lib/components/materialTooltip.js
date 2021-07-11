@@ -5,7 +5,7 @@ export default class MaterialTooltip extends React.Component {
     render () {
         const { material, targetId } = this.props,
             domain = material.domainofmastery || material.domainofforgery,
-            imgSrc = `img/domains/${domain.replace(/ /g, '_')}.png`;
+            imgSrc = `img/domains/${domain.replace(/ /g, '_').toLowerCase()}.png`;
 
         return (
                 <ReactTooltip id={targetId}
