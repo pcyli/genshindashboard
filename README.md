@@ -8,6 +8,10 @@ This project started because there's just too many fiddly things to track in Gen
 
 › Notification for code copied to clipboard
 
+› Add Horizontal scrolling by grab
+
+› Add mobile support
+
 ## Done!
 
 › Popup Info for location of Domains
@@ -19,6 +23,8 @@ This project started because there's just too many fiddly things to track in Gen
 › Add link to builds and wish tracker
 
 › Add character upgrade material overlaid on tracked characters
+
+› Add tracker for Transformer & Spiral Abyss
 
 › Add tracker support for characters
 

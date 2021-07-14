@@ -1,11 +1,7 @@
 import React from 'react';
 
 export default class SidebarMenu extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = { 'showSubLevel' : true };
-    }
+    state = { 'showSubLevel' : true };
 
     toggleOpen = () => {
         this.setState({'showSubLevel' : !this.state.showSubLevel });
