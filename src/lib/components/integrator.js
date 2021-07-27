@@ -56,7 +56,11 @@ export default class Integrator {
                 )
                 .map(material => material.name);
         } else {
-            return materialObjects.map(material => material.name);
+            return materialObjects.filter(
+                material => material.daysofweek &&
+                            material.daysofweek.includes(day)
+                )
+                .map(material => material.name);
         }
 
     }
