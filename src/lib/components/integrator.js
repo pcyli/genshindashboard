@@ -3,6 +3,16 @@ import genshin from "genshin-db";
 
 export default class Integrator {
     config = integrationConfig;
+    rarityDict = {
+        2 : '2starname',
+        3 : '3starname',
+        4 : '4starname',
+        5 : '5starname'
+    }
+
+    #sanitizeString = (input) => {
+        return input.replace(/"/g,'');
+    }
 
     #getQueryHandler = (type) => {
         switch (type) {
@@ -18,31 +28,61 @@ export default class Integrator {
                 return genshin.weaponmaterialtypes;
             case 'rarity':
                 return genshin.rarity;
+            case 'material':
+                return genshin.materials;
             default:
                 throw (new Error('getQueryHandler: Unexpected Type'));
         }
     }
 
-    getMaterialsListByDay = (type, day) => {
+    getMaterialsListByDay = (type, day, rarity) => {
+        let materialObjects = [];
         switch (type) {
             case 'character':
-                return this.getData('talentMaterial', day, 'all');
+                materialObjects = this.getData('material', 'talent material', 'objects')
+                break;
             case 'weapon':
-                return this.getData('weaponMaterial', day, 'all');
+                materialObjects = this.getData('weaponMaterial', day, 'objects');
+                break;
             default:
                 throw (new Error('getMaterialsListByDay: Unexpected Type'));
         }
+
+        if (rarity) {
+            return materialObjects.filter(
+                    material => material.rarity === rarity &&
+                                material.daysofweek &&
+                                material.daysofweek.includes(day)
+                )
+                .map(material => material.name);
+        } else {
+            return materialObjects.map(material => material.name);
+        }
+
     }
 
-    getMaterialData = (type, name) => {
+    getMaterialData = (name) => {
+        return this.getData('material',  this.#sanitizeString(name), 'objects');
+    }
+
+    getMaterialLocation = (type, name) => {
+        const matches = name.match(/("([^"]*))|([^ ]*)$/),
+            shortName = matches ? (matches[1] || matches[matches.length-1]) : name;
+
+        let material = [];
+
         switch (type) {
             case 'character':
-                return this.getData('talentMaterial', name);
+                material = this.getData('talentMaterial', shortName, 'all');
+                break;
             case 'weapon':
-                return this.getData('weaponMaterial', name);
+                material = this.getData('weaponMaterial', shortName, 'all');
+                break;
             default:
                 throw (new Error('getMaterialData: Unexpected Type'));
         }
+        if (!material) debugger;
+        return material ? (material.domainofforgery || material.domainofmastery) : this.getData('material', name).dropdomain;
     }
 
     getEntitiesListByMaterial = (type, material) => {
@@ -56,21 +96,16 @@ export default class Integrator {
         }
     }
 
-    getEntityAscendMaterial = (type, entity) => {
+    getEntityAscendMaterial = (type, entity, rarity) => {
         switch (type) {
             case 'character':
-                const talentMaterialTypes = this.getData('talentMaterial', 'names', 'all'),
-                      characterTalentCosts = this.getData('talent', entity.name).costs,
-                      characterTalentMaterialName = characterTalentCosts.lvl2[1].name; //extreme hack
+                const characterTalentCosts = this.getData('talent', entity.name).costs,
+                      characterTalentMaterialName = characterTalentCosts.lvl10[1].name; //extreme hack
 
-                for (const talentMaterial of talentMaterialTypes) {
-                    if (characterTalentMaterialName.includes(talentMaterial)) {
-                        return this.getData('talentMaterial', talentMaterial);
-                    }
-                }
-                throw (new Error('getEntitiesListByMaterial: Unexpected Talent Material ' + characterTalentMaterialName));
+                return this.getData('material', characterTalentMaterialName);
             case 'weapon':
-                return this.getData('weaponMaterial', entity.weaponmaterialtype);
+                const weaponBaseMaterialType = this.getData('weaponMaterial', entity.weaponmaterialtype);
+                return this.getData('material', weaponBaseMaterialType[this.rarityDict[rarity]]);
             default:
                 throw (new Error('getEntitiesListByMaterial: Unexpected Type'))
         }
@@ -90,6 +125,9 @@ export default class Integrator {
         switch (options) {
             case 'all':
                 genshinOption = {matchCategories: true};
+                break;
+            case 'objects':
+                genshinOption = {matchCategories: true, verboseCategories: true};
                 break;
             default:
                 break;

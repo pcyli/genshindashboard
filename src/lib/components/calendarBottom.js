@@ -31,7 +31,7 @@ export default class CalendarBottom extends React.Component {
         }
     }
 
-    createEntityImage = (type) => {
+    createEntityImage = (type, rarity) => {
         const {day, userConfig} = this.props;
         const dayMaterials = this.integrator.getMaterialsListByDay(type, day),
             dayEntities2DArray = dayMaterials.map(
@@ -45,7 +45,7 @@ export default class CalendarBottom extends React.Component {
         userConfig[type].forEach(entityName => {
             if (dayEntities.includes(entityName)) {
                 let entity = this.integrator.getData(type, entityName);
-                let material = this.integrator.getEntityAscendMaterial(type, entity);
+                let material = this.integrator.getEntityAscendMaterial(type, entity, rarity);
 
                 if (!material) debugger;
 
@@ -61,39 +61,13 @@ export default class CalendarBottom extends React.Component {
         return entities;
     }
 
-    createCharacterImage = () => {
-        const {day, userConfig} = this.props,
-        dayMaterials = this.integrator.getData('talentMaterial', day, 'all'),
-        dayCharacters2D = dayMaterials.map(
-                                material => this.integrator.getData('talent', material, 'all')
-                            ),
-        dayCharacters = [].concat(...dayCharacters2D);
-        let characters = [];
-
-        userConfig.trackedCharacters.forEach(characterName => {
-            if (dayCharacters.includes(characterName)) {
-                let character = this.integrator.getData('character', characterName);
-                let material = this.integrator.getData('talentMaterial', character.talentmaterialtype);
-
-                characters.push(
-                    <div className='CharacterIcon' key={`calBotCharIcon${characterName}`}>
-                        <img src={character.images.icon} alt={characterName}/>
-                        <MaterialImage material={material} key={material.name} />
-                    </div>
-                    );
-            }
-        });
-
-        return characters;
-    }
-
     render() {
         return (
             <div className="CalendarBottom">
                 {this.createTransformerImage()}
                 {this.createSpiralAbyssImage()}
-                {this.createEntityImage('character')}
-                {this.createEntityImage('weapon')}
+                {this.createEntityImage('character', 4)}
+                {this.createEntityImage('weapon', 5)}
             </div>
         );
     }

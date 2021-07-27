@@ -5,6 +5,8 @@ import MaterialTooltip from "./materialTooltip";
 
 export default class calendarTop extends React.Component {
     integrator = new Integrator();
+    characterRarity = "4";
+    weaponRarity = "5";
 
     createResetInfo = () => {
         const { day, config : { resetDay } } = this.props;
@@ -18,17 +20,21 @@ export default class calendarTop extends React.Component {
         }
     }
 
-    createMaterialImages = (type, day) => {
-        const materialNames = this.integrator.getMaterialsListByDay(type, day);
+    createMaterialImages = (type, day, rarity) => {
+        //Get list of materials as array
+        const materialNames = this.integrator.getMaterialsListByDay(type, day, rarity);
         let materialImages = [];
 
         materialNames.forEach(materialName => {
-            const material = this.integrator.getMaterialData(type, materialName),
+            //Get list of materials as objects
+            const material = this.integrator.getMaterialData(materialName),
+                materialLocation = this.integrator.getMaterialLocation(type, materialName),
                 dataId = `calendarTop_${material.name}`;
+
             materialImages.push(
                 <>
                     <MaterialImage material={material} dataFor={dataId} key={dataId} />
-                    <MaterialTooltip material={material} targetId={dataId} key={`${dataId}_tooltip`} />
+                    <MaterialTooltip material={material} location={materialLocation} targetId={dataId} key={`${dataId}_tooltip`} />
                 </>
             )
         });
@@ -43,10 +49,10 @@ export default class calendarTop extends React.Component {
             <div className="CalendarTop">
                 <div className="day">{day}</div>
                 <div className="container">
-                    { this.createMaterialImages('character', day) }
+                    { this.createMaterialImages('character', day, this.characterRarity) }
                 </div>
                 <div className="container">
-                    { this.createMaterialImages('weapon', day) }
+                    { this.createMaterialImages('weapon', day, this.weaponRarity) }
                 </div>
                 {this.createResetInfo()}
             </div>

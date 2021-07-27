@@ -2,13 +2,11 @@ import EntityImage from "./entityImage";
 
 export default class MaterialImage extends EntityImage {
     createMaterialURL (material) {
-        let highMaterialName = material['5starname'] || material['4starname'] ;
-
-        if (!highMaterialName) {
-            highMaterialName = material.name;
+        if (material.images) {
+            return material.images.fandom || material.images.redirect;
+        } else {
+            return `img/items/Item_${this.convertURISafe(material.name)}.png`;
         }
-
-        return `img/items/Item_${this.convertURISafe(highMaterialName)}.png`;
     }
 
     render () {
