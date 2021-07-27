@@ -42,7 +42,7 @@ export default class Integrator {
                 materialObjects = this.getData('material', 'talent material', 'objects')
                 break;
             case 'weapon':
-                materialObjects = this.getData('weaponMaterial', day, 'objects');
+                materialObjects = this.getData('material', 'weapon material', 'objects')
                 break;
             default:
                 throw (new Error('getMaterialsListByDay: Unexpected Type'));
@@ -85,19 +85,25 @@ export default class Integrator {
             default:
                 throw (new Error('getMaterialData: Unexpected Type'));
         }
-        if (!material) debugger;
+
         return material ? (material.domainofforgery || material.domainofmastery) : this.getData('material', name).dropdomain;
     }
 
     getEntitiesListByMaterial = (type, material) => {
+        let list = [];
         switch (type) {
             case 'character':
-                return this.getData('talent', material, 'all');
+                list = this.getData('talent', material, 'all');
+                break;
             case 'weapon':
-                return this.getData('weapon', material, 'all');
+                list = this.getData('weapon', material, 'all');
+                break;
             default:
                 throw (new Error('getEntitiesListByMaterial: Unexpected Type'));
         }
+
+        //Return name of Entities
+        return list;
     }
 
     getEntityAscendMaterial = (type, entity, rarity) => {
