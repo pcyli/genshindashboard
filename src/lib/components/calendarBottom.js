@@ -40,8 +40,6 @@ export default class CalendarBottom extends React.Component {
             dayEntities = [].concat(...dayEntities2DArray);
         let entities = [];
 
-        if (!userConfig[type]) debugger;
-
         userConfig[type].forEach(entityName => {
             if (dayEntities.includes(entityName)) {
                 let entity = this.integrator.getData(type, entityName);

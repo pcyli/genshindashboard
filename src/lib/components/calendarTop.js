@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import MaterialImage from "./materialImage";
 import Integrator from "./integrator";
 import MaterialTooltip from "./materialTooltip";
@@ -13,7 +13,7 @@ export default class calendarTop extends React.Component {
 
         if ( day === resetDay) {
             return (
-                <div className='Reset'>
+                <div className='Reset' key={'ResetDay'}>
                     Incoming Reset Day!
                 </div>
             );
@@ -32,10 +32,10 @@ export default class calendarTop extends React.Component {
                 dataId = `calendarTop_${material.name}`;
 
             materialImages.push(
-                <>
+                <Fragment key={`${dataId}_wrapper`}>
                     <MaterialImage material={material} dataFor={dataId} key={dataId} />
                     <MaterialTooltip material={material} location={materialLocation} targetId={dataId} key={`${dataId}_tooltip`} />
-                </>
+                </Fragment>
             )
         });
 

@@ -60,6 +60,7 @@ export default class Tracker extends SidebarMenu {
                                              alt = { rarity }
                                         />}
                         subLevelItems = { outputEntities }
+                        key = { `${entityType}_${rarity}_tracker` }
                         />
                 );
             }

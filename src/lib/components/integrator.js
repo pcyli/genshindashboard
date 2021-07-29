@@ -96,13 +96,16 @@ export default class Integrator {
                 list = this.getData('talent', material, 'all');
                 break;
             case 'weapon':
-                list = this.getData('weapon', material, 'all');
+                let materialType = this.getData('weaponMaterial', material, 'objects');
+                if (materialType) {
+                    list = this.getData('weapon', materialType.name, 'all');
+                }
                 break;
             default:
                 throw (new Error('getEntitiesListByMaterial: Unexpected Type'));
         }
 
-        //Return name of Entities
+        //Return array of Entity names
         return list;
     }
 
