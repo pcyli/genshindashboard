@@ -39,21 +39,18 @@ export default class CalendarBottom extends React.Component {
             ),
             dayEntities = [].concat(...dayEntities2DArray);
 
-         return userConfig[type].map(entityName => {
-            if (dayEntities.includes(entityName)) {
-                let entity = this.integrator.getData(type, entityName);
-                let material = this.integrator.getEntityAscendMaterial(type, entity, rarity);
+         return userConfig[type].filter(entityName => dayEntities.includes(entityName))
+                .map(entityName => {
+                    let entity = this.integrator.getData(type, entityName);
+                    let material = this.integrator.getEntityAscendMaterial(type, entity, rarity);
 
-                if (!material) { return null; }
-
-                return (
-                    <div className={'CharacterIcon'} key={`calBotCharIcon${entityName}`}>
+                    return (
+                        <div className={'CharacterIcon'} key={`calBotCharIcon${entityName}`}>
                         <img src={entity.images.icon} alt={entityName}/>
                         <MaterialImage material={material} key={material.name} />
-                    </div>
-                );
-            }
-        });
+                        </div>
+                    );
+                });
     }
 
     render() {
