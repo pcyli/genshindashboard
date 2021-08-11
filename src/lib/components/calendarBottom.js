@@ -33,16 +33,17 @@ export default class CalendarBottom extends React.Component {
 
     createEntityImage = (type, rarity) => {
         const {day, userConfig} = this.props;
-        const dayMaterials = this.integrator.getMaterialsListByDay(type, day, rarity),
+        const integrator = this.integrator;
+        const dayMaterials = integrator.getMaterialsListByDay(type, day, rarity),
             dayEntities2DArray = dayMaterials.map(
-                material => this.integrator.getEntitiesListByMaterial(type, material)
+                material => integrator.getEntitiesListByMaterial(type, material)
             ),
             dayEntities = [].concat(...dayEntities2DArray);
 
          return userConfig[type].filter(entityName => dayEntities.includes(entityName))
                 .map(entityName => {
-                    let entity = this.integrator.getData(type, entityName);
-                    let material = this.integrator.getEntityAscendMaterial(type, entity, rarity);
+                    let entity = integrator.getData(type, entityName);
+                    let material = integrator.getEntityAscendMaterial(type, entity, rarity);
 
                     return (
                         <div className={'CharacterIcon'} key={`calBotCharIcon${entityName}`}>
