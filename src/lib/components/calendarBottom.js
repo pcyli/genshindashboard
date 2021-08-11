@@ -33,21 +33,20 @@ export default class CalendarBottom extends React.Component {
 
     createEntityImage = (type, rarity) => {
         const {day, userConfig} = this.props;
-        const dayMaterials = this.integrator.getMaterialsListByDay(type, day),
+        const dayMaterials = this.integrator.getMaterialsListByDay(type, day, rarity),
             dayEntities2DArray = dayMaterials.map(
                 material => this.integrator.getEntitiesListByMaterial(type, material)
             ),
             dayEntities = [].concat(...dayEntities2DArray);
-        let entities = [];
 
-        userConfig[type].forEach(entityName => {
+         return userConfig[type].map(entityName => {
             if (dayEntities.includes(entityName)) {
                 let entity = this.integrator.getData(type, entityName);
                 let material = this.integrator.getEntityAscendMaterial(type, entity, rarity);
 
-                if (!material) debugger;
+                if (!material) { return null; }
 
-                entities.push(
+                return (
                     <div className={'CharacterIcon'} key={`calBotCharIcon${entityName}`}>
                         <img src={entity.images.icon} alt={entityName}/>
                         <MaterialImage material={material} key={material.name} />
@@ -55,8 +54,6 @@ export default class CalendarBottom extends React.Component {
                 );
             }
         });
-
-        return entities;
     }
 
     render() {
@@ -64,8 +61,8 @@ export default class CalendarBottom extends React.Component {
             <div className="CalendarBottom">
                 {this.createTransformerImage()}
                 {this.createSpiralAbyssImage()}
-                {this.createEntityImage('character', 4)}
-                {this.createEntityImage('weapon', 5)}
+                {this.createEntityImage('character', "4")}
+                {this.createEntityImage('weapon', "5")}
             </div>
         );
     }

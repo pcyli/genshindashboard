@@ -22,24 +22,20 @@ export default class calendarTop extends React.Component {
 
     createMaterialImages = (type, day, rarity) => {
         //Get list of materials as array
-        const materialNames = this.integrator.getMaterialsListByDay(type, day, rarity);
-        let materialImages = [];
+        const materials = this.integrator.getMaterialsListByDay(type, day, rarity);
 
-        materialNames.forEach(materialName => {
+        return materials.map(material => {
             //Get list of materials as objects
-            const material = this.integrator.getMaterialData(materialName),
-                materialLocation = this.integrator.getMaterialLocation(type, materialName),
+            const materialLocation = this.integrator.getMaterialLocation(type, material.name),
                 dataId = `calendarTop_${material.name}`;
 
-            materialImages.push(
+            return (
                 <Fragment key={`${dataId}_wrapper`}>
                     <MaterialImage material={material} dataFor={dataId} key={dataId} />
                     <MaterialTooltip material={material} location={materialLocation} targetId={dataId} key={`${dataId}_tooltip`} />
                 </Fragment>
             )
         });
-
-        return materialImages;
     }
 
     render () {
